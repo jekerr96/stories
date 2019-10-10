@@ -1,0 +1,39 @@
+@imagePath: "/images/";
+@transitTime: .2s;
+
+@darkColor: #1a212e;
+@whiteColor: #fff;
+@light: #e5ded1;
+@orange: #ffb74d;
+@green: #0ed60e;
+@red: #ca2424;
+
+.pseudo() {
+    content: '';
+    position: absolute;
+    display: block;
+}
+
+.icon(@name, @width, @height) {
+    background-image: url('@{imagePath}@{name}');
+    width: @width;
+    height: @height;
+}
+
+.transit(@property: all, @time: @transitTime, @func: ease) {
+    transition: @property @time @func;
+}
+
+.underline(@color: currentColor, @height: 1px) {
+    .underline {
+        .transit(background-size);
+        background: linear-gradient(@color 0%, @color 100%) ~'0 100% / 100%' @height no-repeat;
+    }
+
+    &:hover {
+        .underline {
+            background-size: 0 @height;
+        }
+    }
+
+}
