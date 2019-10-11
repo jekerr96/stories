@@ -1,0 +1,54 @@
+@import "../_var";
+
+.to-top {
+    .transit();
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 900;
+    font-size: 20px;
+    margin: 0 5px;
+    background: fade(darken(@darkColor, 10%), 50%);
+    border-radius: 50%;
+    position: fixed;
+    left: 10px;
+    bottom: 10px;
+    cursor: pointer;
+
+    &.hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    &:before,
+    &:after {
+        .pseudo();
+        .transit();
+        top: 25%;
+        left: 50%;
+        background: @whiteColor;
+        width: 16px;
+        height: 2px;
+        transform-origin: left center;
+    }
+
+    &:before {
+        transform: rotate(135deg);
+    }
+
+    &:after {
+        transform: rotate(45deg);
+    }
+
+    &:hover {
+        background: @orange;
+
+        &:before,
+        &:after {
+            top: calc(25% - 5px);
+            background: @darkColor;
+        }
+    }
+}

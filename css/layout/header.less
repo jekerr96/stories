@@ -5,3 +5,35 @@
     justify-content: space-between;
     padding: 20px 0;
 }
+.header-actions {
+    background: fade(darken(@darkColor, 10%), 50%);
+    padding: 10px;
+    border-radius: 10px;
+
+    > a {
+        .transit();
+        position: relative;
+        z-index: 2;
+        padding: 5px;
+
+        &:before {
+            .pseudo();
+            .transit();
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 0;
+            background: @orange;
+            z-index: -1;
+            border-radius: 5px;
+        }
+
+        &:hover {
+            color: @darkColor;
+
+            &:before {
+                height: 100%;
+            }
+        }
+    }
+}
