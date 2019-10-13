@@ -1,5 +1,6 @@
 import 'can-construct-super';
 import Control from 'can-control';
+import {initForm} from "../forms/helper/loader";
 
 /**
  * Стандартный контроллер для попапов, с минимально-достаточным функционалом
@@ -16,7 +17,7 @@ const PopupBase = Control.extend(
     {
         init: function() {
             this.$element = $(this.element);
-            // initForm(this.$element);
+            initForm(this.$element);
         },
 
         '{closeBtn} click'() {

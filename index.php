@@ -1,14 +1,6 @@
 <? $pageType = "main" ?>
 <? include "template/header.php" ?>
     <div class="container">
-        <div class="search-wrapper">
-            <form action="/">
-                <label>
-                    <input type="text" name="q" autocomplete="off" placeholder="Найти самую интересную историю">
-                </label>
-            </form>
-        </div>
-
         <div class="content-wrapper">
             <div class="genres">
                 <div class="genres-title">Поиск по жанрам</div>

@@ -9,6 +9,8 @@ const BasePage = Control.extend({
     init() {
         this.scrollTop = this.element.querySelector(".js-to-top");
         this.checkScroll();
+
+        this.headerActions = this.element.querySelector(".js-header-actions");
     },
 
     ".js-to-top click"() {
@@ -30,6 +32,20 @@ const BasePage = Control.extend({
             type: "ajax",
             opts: fancyboxOptions
         })
+    },
+
+    ".js-header-profile click"(el) {
+        el.classList.toggle("open");
+
+        if (!this.headerActions) return;
+
+        let height = 0;
+
+        if (el.classList.contains("open")) {
+            height = this.headerActions.scrollHeight;
+        }
+
+        this.headerActions.style.height = (height + (height === 0 ? 0 : 50)) + "px";
     },
 
     checkScroll() {

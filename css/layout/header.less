@@ -1,7 +1,37 @@
 @import "../_var";
 
+.search-wrapper {
+    display: flex;
+    justify-content: flex-end;
+
+    form {
+        position: relative;
+
+        input {
+            width: 350px;
+            border-radius: 10px;
+            outline: none;
+            color: @light;
+            border: 1px solid;
+            height: 30px;
+            padding: 0 20px 0 40px;
+            background: transparent;
+        }
+        &:before {
+            .pseudo();
+            background: center/cover;
+            .icon("search.png", 25px, 25px);
+            left: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            filter: invert(100%);
+        }
+    }
+}
+
 .header-wrapper {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     padding: 20px 0;
 }
@@ -9,6 +39,33 @@
     background: fade(darken(@darkColor, 10%), 50%);
     padding: 10px;
     border-radius: 10px;
+
+    &.auth {
+        min-width: 223px;
+        border: 2px solid @orange;
+        border-bottom: none;
+        box-sizing: border-box;
+        border-bottom: 2px solid @orange;
+
+        &.open {
+            border-bottom: none;
+
+            .header-profile-actions {
+                padding: 40px 10px 10px;
+                opacity: 1;
+                pointer-events: all;
+                transition-delay: 0s;
+
+                &:before {
+                    opacity: 1;
+                }
+            }
+
+            .header-profile-action-icon {
+                transform: scaleY(-1) translateY(25%);
+            }
+        }
+    }
 
     > a {
         .transit();
@@ -33,6 +90,119 @@
 
             &:before {
                 height: 100%;
+            }
+        }
+    }
+
+    .header-profile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .avatar {
+        background: center/cover;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        overflow: hidden;
+        display: inline-block;
+    }
+
+    .profile-name {
+        margin-left: 10px;
+    }
+
+    .header-profile-action-icon {
+        .transit(all, .5s);
+        width: 0;
+        display: inline-block;
+        border:10px solid transparent;
+        border-top-color: @whiteColor;
+        transform: translateY(25%);
+        margin-left: 10px;
+    }
+
+    .header-profile-actions {
+        transition-property: opacity, height, padding;
+        transition-duration: 0s, .7s, .7s;
+        transition-delay: .7s, 0s, 0s;
+        transition-timing-function: linear;
+        position: absolute;
+        right: -12px;
+        top: 100%;
+        display: flex;
+        flex-direction: column;
+        height: 0;
+        background: @darkColor;
+        z-index: 12;
+        border: 2px solid @orange;
+        border-top: none;
+        width: calc(100% + 24px);
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        box-sizing: border-box;
+        background: rgb(17, 21, 30);
+        padding: 0;
+        opacity: 0;
+        cursor: default;
+        pointer-events: none;
+        overflow: hidden;
+
+        &:before {
+            .pseudo();
+            left: 10px;
+            top: 20px;
+            width: calc(100% - 20px);
+            height: 1px;
+            background: @whiteColor;
+            opacity: 0;
+        }
+
+        a {
+            .transit();
+            margin-bottom: 10px;
+            border-radius: 5px;
+            padding: 5px;
+            text-align: center;
+            background: @darkColor;
+            z-index: 2;
+            position: relative;
+
+            &:after {
+                .pseudo();
+                .transit();
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height: 0;
+                background: @orange;
+                z-index: -1;
+                border-radius: 5px;
+            }
+
+            &:hover {
+                color: @darkColor;
+
+                &:after {
+                    height: 100%;
+                }
+            }
+
+            &:last-child {
+                margin-top: 30px;
+
+                &:before {
+                    .pseudo();
+                    left: 0;
+                    top: -20px;
+                    width: 100%;
+                    height: 1px;
+                    background: @whiteColor;
+                    pointer-events: none;
+                }
             }
         }
     }

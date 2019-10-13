@@ -1,0 +1,53 @@
+@import "../_var";
+
+.fancybox-bg {
+    background: #848484;
+}
+
+.popup-close {
+    background: none;
+    //border: none;
+    outline: none;
+    position: absolute;
+    right: -15px;
+    top: -15px;
+    width: 35px;
+    height: 35px;
+    z-index: 3;
+    cursor: pointer;
+    //border: 1px solid @orange;
+    //border-radius: 50%;
+    border: 1px solid @whiteColor;
+    border-radius: 50%;
+    background: @whiteColor;
+    //transform: translate(100%, 100%);
+    //
+
+    &:before,
+    &:after {
+        .pseudo();
+        left: 50%;
+        top: 50%;
+        width: calc(100% - 10px);
+        height: 3px;
+        background: @darkColor;
+    }
+
+    &:before {
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &:after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    &:hover {
+        &:before {
+            animation: close-animation 1s linear;
+        }
+
+        &:after {
+            animation: close-animation-second 1s linear;
+        }
+    }
+}
