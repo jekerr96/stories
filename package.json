@@ -12,6 +12,7 @@
     "can-control": "^3.2.4",
     "gulp-livereload": "^4.0.2",
     "jquery": "^3.4.1",
+    "js-tabs": "^1.0.1",
     "less": "^3.9.0",
     "less-plugin-autoprefix": "^2.0.0",
     "livereload": "^0.8.2",

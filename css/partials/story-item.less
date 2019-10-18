@@ -1,0 +1,148 @@
+@import "../_var";
+
+.list-stories {
+    .story-item {
+        .underline();
+        margin-bottom: 45px;
+        background: fade(darken(@darkColor, 10%), 50%);
+        border-radius: 10px;
+        padding: 10px 15px;
+        position: relative;
+
+        &:hover {
+            .buttons {
+                opacity: 1;
+            }
+        }
+    }
+
+    .story-name {
+        font-size: 20px;
+        color: @orange;
+    }
+
+    .story-preview {
+        margin-top: 20px;
+    }
+
+    .bottom-tools {
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    .date {
+        //position: absolute;
+        //right: 10px;
+        //bottom: 10px;
+    }
+
+    .buttons {
+        .transit();
+        display: flex;
+        margin-right: 10px;
+        opacity: 0;
+
+        > div {
+            margin: 0 10px;
+            cursor: pointer;
+        }
+    }
+
+    .bookmark {
+        position: relative;
+
+        &:before {
+            .icon("bookmark.svg", 32px, 32px);
+            position: relative;
+            content: "";
+            display: inline-block;
+        }
+    }
+
+    .read-late {
+        position: relative;
+
+        &:before {
+            .icon("time.svg", 32px, 32px);
+            position: relative;
+            content: "";
+            display: inline-block;
+        }
+    }
+
+    .edit {
+        position: relative;
+
+        &:before {
+            .icon("edit.svg", 32px, 32px);
+            position: relative;
+            content: "";
+            display: inline-block;
+        }
+    }
+
+    .detail-link {
+        .transit();
+        position: relative;
+        z-index: 2;
+        padding: 5px;
+        margin-left: -5px;
+        border: 1px solid @orange;
+        border-radius: 5px;
+
+        &:before {
+            .pseudo();
+            .transit();
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 0;
+            background: @orange;
+            z-index: -1;
+            border-radius: 5px;
+        }
+
+        &:hover {
+            color: @darkColor;
+
+            &:before {
+                height: 100%;
+            }
+        }
+    }
+
+    .rating {
+        position: relative;
+        margin-left: 40px;
+        background: @orange;
+        color: @darkColor;
+        border-radius: 5px;
+        padding: 0 3px;
+        font-size: 18px;
+        font-weight: 900;
+        top: 3px;
+
+        &:before {
+            background: center / cover;
+            .icon("star.png", 20px, 20px);
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: inline-block;
+            margin-left: 5px;
+        }
+    }
+
+    .list-genres {
+        margin: 20px -10px;
+    }
+
+    .btn-wrapper {
+        margin: 20px 0;
+    }
+}
