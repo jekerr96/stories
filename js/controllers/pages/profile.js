@@ -12,8 +12,6 @@ const ProfilePage = BasePage.extend({
                 elm: '.js-tabs'
             });
 
-            console.log(this.myTabs);
-
             this.myTabs.init()
         },
     });

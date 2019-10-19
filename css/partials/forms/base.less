@@ -7,7 +7,7 @@
         //margin-bottom: 30px;
         position: relative;
 
-        span {
+        > span:not(.select2) {
             .transit();
             font-size: 16px;
             margin-right: 10px;
@@ -20,7 +20,8 @@
             transform: translateY(-50%);
         }
 
-        input {
+        input,
+        textarea {
             border-radius: 5px;
             outline: none;
             border: none;
@@ -31,16 +32,22 @@
             box-sizing: border-box;
             background: lighten(@darkColor, 20%);
             color: @whiteColor;
+            font: 400 16px "PT Serif", sans-serif;
+            resize: none;
 
             &::placeholder {
                 opacity: .7;
             }
 
-            &:focus + span,
-            &.filled + span {
+            &:focus + span:not(.select2),
+            &.filled + span:not(.select2) {
                 top: 0;
                 font-size: 14px;
             }
+        }
+
+        textarea {
+            padding-top: 10px;
         }
 
         .error {
