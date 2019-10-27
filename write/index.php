@@ -21,6 +21,11 @@
                 </select>
             </label>
             <div class="editor js-editor"></div>
+            <div class="btn-wrapper-write">
+                <div class="btn js-fancy" data-href="<?= "/partials/preview.php" ?>">Предварительный просмотр</div>
+                <div class="btn">Сохранить в черновик</div>
+                <div class="btn">Опубликовать</div>
+            </div>
         </form>
     </div>
 </div>

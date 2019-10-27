@@ -1,0 +1,31 @@
+@import "../../_var";
+
+.popup-preview {
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 0;
+    overflow-x: hidden;
+    background: @darkColor;
+
+    .popup-close {
+        right: 30px;
+        top: 10px;
+        position: fixed;
+    }
+
+    .popup-btn-wrapper {
+        display: flex;
+        justify-content: center;
+        //margin: 50px 0;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        background: @darkHex;
+        width: 100%;
+
+        .btn {
+            margin: 0 20px;
+        }
+    }
+}

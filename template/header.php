@@ -24,7 +24,7 @@
                             <div class="profile-name">#NICKNAME#</div>
                             <div class="header-profile-action-icon"></div>
                             <div class="header-profile-actions js-header-actions">
-                                <a href="javascript:void(0)">Мой профиль</a>
+                                <a href="/profile/">Мой профиль</a>
                                 <a href="javascript:void(0)">Написать историю</a>
                                 <a href="javascript:void(0)">Личные сообщения</a>
                                 <a href="javascript:void(0)">Служба поддержки</a>

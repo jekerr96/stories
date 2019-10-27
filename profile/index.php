@@ -9,6 +9,7 @@
                     <div class="tab js-tabs__tab">Закладки</div>
                     <div class="tab js-tabs__tab">Прочитать позже</div>
                     <div class="tab js-tabs__tab">Мои работы</div>
+                    <div class="tab js-tabs__tab">Черновики</div>
                 </div>
             </div>
             <div class="profile-content js-tabs__content-container">
@@ -54,6 +55,14 @@
                 <div class="js-tabs__content">
                     <div class="list-stories">
                         <? for ($i = 0; $i < 10; $i++): ?>
+                            <? require $_SERVER["DOCUMENT_ROOT"] . "/partials/story-item.php" ?>
+                        <? endfor; ?>
+                    </div>
+                </div>
+                <div class="js-tabs__content">
+                    <div class="list-stories">
+                        <? for ($i = 0; $i < 10; $i++): ?>
+                        <? //todo убрать кнопку читать, заменить на редактировать и опубликовать ?>
                             <? require $_SERVER["DOCUMENT_ROOT"] . "/partials/story-item.php" ?>
                         <? endfor; ?>
                     </div>
