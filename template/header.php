@@ -25,11 +25,10 @@
                             <div class="header-profile-action-icon"></div>
                             <div class="header-profile-actions js-header-actions">
                                 <a href="/profile/">Мой профиль</a>
-                                <a href="javascript:void(0)">Написать историю</a>
-                                <a href="javascript:void(0)">Личные сообщения</a>
-                                <a href="javascript:void(0)">Служба поддержки</a>
-                                <a href="javascript:void(0)">Настройки</a>
-                                <a href="javascript:void(0)">Выход</a>
+                                <a href="/write/">Написать историю</a>
+                                <a href="javascript:void(0)" data-href="/partials/support.php" class="js-fancy">Служба поддержки</a>
+                                <a href="/settings/">Настройки</a>
+                                <a href="javascript:void(0)" data-href="/partials/exit.php" class="js-fancy">Выход</a>
                             </div>
                         </div>
                     <? endif; ?>

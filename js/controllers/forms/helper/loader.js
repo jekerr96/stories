@@ -11,7 +11,6 @@ export const initForm = function($element) {
 
         let formType = form.dataset.formType;
 
-
         try {
             FormController = require('../' + formType);
         } catch (ex) {

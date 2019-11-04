@@ -36,7 +36,7 @@
 /******/ 	// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 	// Promise = chunk loading, 0 = chunk loaded
 /******/ 	var installedChunks = {
-/******/ 		"main": 0
+/******/ 		"settings": 0
 /******/ 	};
 /******/
 /******/
@@ -196,7 +196,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./main.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./settings.js");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1193,15 +1193,15 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(f
 
 /***/ }),
 
-/***/ "./main.js":
-/*!*****************!*\
-  !*** ./main.js ***!
-  \*****************/
+/***/ "./settings.js":
+/*!*********************!*\
+  !*** ./settings.js ***!
+  \*********************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./base */ \"./base.js\");\n\n\nconst MainPage = _base__WEBPACK_IMPORTED_MODULE_0__[\"BasePage\"].extend({\n        defaults: {}\n    },\n    {\n        init() {\n            this._super();\n        },\n\n        \".js-plus click\"(el) {\n            el.classList.toggle(\"active\");\n            el.closest(\".js-genre\").querySelector(\".js-minus\").classList.remove(\"active\");\n        },\n\n        \".js-minus click\"(el) {\n            el.classList.toggle(\"active\");\n            el.closest(\".js-genre\").querySelector(\".js-plus\").classList.remove(\"active\");\n        },\n    });\n\nnew MainPage(document.querySelector(\"body\"));\n\n//# sourceURL=webpack:///./main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./base */ \"./base.js\");\n/* harmony import */ var _forms_helper_loader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../forms/helper/loader */ \"../forms/helper/loader.js\");\n\n\n\nconst SettingsPage = _base__WEBPACK_IMPORTED_MODULE_0__[\"BasePage\"].extend({\n        defaults: {}\n    },\n    {\n        init() {\n            this._super();\n            this.$element = $(this.element);\n\n            Object(_forms_helper_loader__WEBPACK_IMPORTED_MODULE_1__[\"initForm\"])(this.$element);\n        },\n    });\n\nnew SettingsPage(document.querySelector(\"body\"));\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ \"../../../node_modules/jquery/dist/jquery.js\")))\n\n//# sourceURL=webpack:///./settings.js?");
 
 /***/ })
 

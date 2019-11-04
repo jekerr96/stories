@@ -1,0 +1,108 @@
+@import "../_var";
+
+.settings-page {
+    .settings-wrapper {
+        background: @mainColor;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    .line-container {
+        border: 2px solid @orange;
+        border-radius: 10px;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .profile-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        .avatar-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .image-wrapper {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .avatar {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translate(-50%, 0);
+            object-fit: contain;
+            width: 100%;
+            height: 100%;
+        }
+
+        .change-avatar {
+            .transit();
+            background: transparent;
+            border: none;
+            color: @whiteColor;
+            position: relative;
+            padding: 5px;
+            z-index: 2;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 20px;
+            cursor: pointer;
+
+            &:before {
+                .transit();
+                .pseudo();
+                left: 0;
+                bottom: 0;
+                background: @whiteColor;
+                width: 100%;
+                height: 1px;
+                z-index: -1;
+            }
+
+            &:hover {
+                color: @darkColor;
+
+                &:before {
+                    background: @orange;
+                    height: 100%;
+                }
+            }
+        }
+
+        .name {
+            width: 100%;
+            align-self: center;
+            font-size: 25px;
+        }
+    }
+
+    .sections-container {
+        margin-top: 40px;
+
+        .section {
+            border-top: 2px solid @whiteColor;
+            padding-bottom: 40px;
+
+            &:last-child {
+                padding-bottom: 0;
+            }
+        }
+
+        .section-title {
+            font-size: 20px;
+            margin-top: 30px;
+        }
+    }
+}
