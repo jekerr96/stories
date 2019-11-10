@@ -1,0 +1,12 @@
+{
+  "autoload": {
+    "psr-4": {
+      "local\\": "local/"
+    }
+  },
+  "require": {
+    "symfony/polyfill-mbstring": "^1.12",
+    "ext-mbstring": "*",
+    "ext-pdo": "*"
+  }
+}

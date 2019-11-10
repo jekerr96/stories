@@ -1,3 +1,4 @@
+<? require_once $_SERVER["DOCUMENT_ROOT"] . "/local/prolog.php" ?>
 <html class="white">
 <head>
     <link rel="stylesheet" href="/css/style.css?<?= filemtime($_SERVER['DOCUMENT_ROOT'] . "/css/style.css") ?>">
