@@ -3,13 +3,14 @@
 .main-page {
     .content-wrapper {
         display: flex;
+        flex-direction: column;
         margin-top: 10px;
         align-items: baseline;
     }
 
     .genres {
         width: 100%;
-        max-width: 200px;
+        //max-width: 200px;
         margin-right: 20px;
         //background: @light;
         border-radius: 20px;
@@ -17,43 +18,92 @@
         box-sizing: border-box;
         position: relative;
         background: @mainColor;
+        margin-bottom: 20px;
+        border: 2px solid @orange;
 
         .genres-wrapper {
             display: flex;
-            flex-direction: column;
+            flex-wrap: wrap;
             position: relative;
-
-            &:before {
-                .pseudo();
-                left: -10px;
-                top: 0;
-                width: 5px;
-                height: 100%;
-                background: @orange;
-                border-radius: 2px;
-            }
+            margin: 0 -10px;
         }
 
         .genres-title {
             font-size: 20px;
             margin-bottom: 10px;
             text-align: center;
+            position: relative;
+
+            span {
+                position: relative;
+                display: inline-block;
+                padding-right: 20px;
+
+                &:before,
+                &:after {
+                    .pseudo();
+                    .transit();
+                    width: 10px;
+                    height: 2px;
+                    background: @whiteColor;
+                    right: 0;
+                    top: 50%;
+                    transform: translateY(-125%);
+                }
+
+                &:before {
+                    transform: translateY(-125%) rotate(45deg);
+                    transform-origin: 0 center;
+                }
+
+                &:after {
+                    right: -4px;
+                    transform: translateY(-125%) rotate(-45deg);
+                    transform-origin: 100% center;
+                }
+            }
+
+            &.active {
+                span {
+                    &:before {
+                        transform: translateY(125%) rotate(-45deg);
+                        transform-origin: 0 center;
+                    }
+
+                    &:after {
+                        right: -4px;
+                        transform: translateY(125%) rotate(45deg);
+                        transform-origin: 100% center;
+                    }
+                }
+            }
         }
 
         a {
             .transit(color, .5s);
             position: relative;
-            padding: 5px;
-            border-radius: 10px;
-            overflow: hidden;
-            //color: #000;
+            padding: 5px 20px;
+            width: 25%;
+            box-sizing: border-box;
+            border-left: 1px solid @whiteColor;
 
-            &:first-child {
-                padding-top: 0;
+            &:nth-child(4n + 1) {
+                border-color: transparent;
             }
 
-            span {
+            .genre-name {
                 position: relative;
+                padding-right: 60px;
+                box-sizing: border-box;
+                display: inline-block;
+            }
+
+            .genre-actions {
+                width: 60px;
+                display: inline-block;
+                position: absolute;
+                right: 20px;
+                top: 0;
             }
 
             &:before {
@@ -101,6 +151,48 @@
 
         .minus.active {
             background: @red;
+        }
+    }
+
+    @media @media-xl {
+        .genres {
+            a {
+                width: 33.33%;
+
+                &:nth-child(4n + 1) {
+                    border-color: @whiteColor;
+                }
+
+                &:nth-child(3n + 1) {
+                    border-color: transparent;
+                }
+            }
+        }
+    }
+
+    @media @media-sm {
+        .genres {
+            a {
+                width: 50%;
+                font-size: 14px;
+
+                &:nth-child(3n + 1) {
+                    border-color: @whiteColor;
+                }
+            }
+        }
+    }
+
+    @media @media-xs {
+        .genres {
+            a {
+                width: 100%;
+                border-color: transparent;
+
+                &:nth-child(3n + 1) {
+                    border-color: transparent;
+                }
+            }
         }
     }
 }

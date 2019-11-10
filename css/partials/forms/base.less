@@ -128,4 +128,39 @@
         margin-top: 20px;
         //align-self: flex-end;
     }
+
+    @media @media-sm {
+        label {
+            input[type='checkbox'] + span {
+                width: 100%;
+                display: inline-block;
+                padding-right: 40px;
+                box-sizing: border-box;
+
+                &:before {
+                    left: auto;
+                    right: 0;
+                }
+
+                &:after {
+                    left: auto;
+                    right: 0;
+                }
+            }
+        }
+
+        .btn-wrapper {
+            .btn {
+                font-size: 20px;
+            }
+        }
+    }
+
+    @media @media-xs {
+        .btn-wrapper {
+            .btn {
+                font-size: 14px;
+            }
+        }
+    }
 }

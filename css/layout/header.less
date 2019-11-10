@@ -6,9 +6,12 @@
 
     form {
         position: relative;
+        max-width: 100%;
 
         input {
             width: 350px;
+            max-width: 100%;
+            box-sizing: border-box;
             border-radius: 10px;
             outline: none;
             color: @light;
@@ -27,6 +30,16 @@
             filter: invert(100%);
         }
     }
+
+    @media @media-sm {
+        form {
+            width: 100%;
+
+            input {
+                width: 100%;
+            }
+        }
+    }
 }
 
 .header-wrapper {
@@ -34,6 +47,14 @@
     align-items: center;
     justify-content: space-between;
     padding: 20px 0;
+
+    @media @media-xs {
+        flex-direction: column;
+
+        .header-actions {
+            margin-top: 20px;
+        }
+    }
 }
 .header-actions {
     background: @mainColor;

@@ -9,7 +9,8 @@
         padding: 10px 15px;
         position: relative;
 
-        &:hover {
+        &:hover,
+        .is-touch &{
             .buttons {
                 opacity: 1;
             }
@@ -144,5 +145,23 @@
 
     .btn-wrapper {
         margin: 20px 0;
+    }
+
+    @media @media-xs {
+        .story-item {
+            padding-bottom: 50px;
+
+            .story-name {
+                font-size: 16px;
+            }
+
+            .story-preview {
+                font-size: 14px;
+            }
+
+            .btn-wrapper {
+                text-align: center;
+            }
+        }
     }
 }

@@ -9,6 +9,11 @@
                     <div class="author-name">#NICKNAME#</div>
                 </div>
                 <div class="header-info">
+                    <div class="author-container mobile">
+                        <div class="author-avatar"
+                             style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxXBKDAHjWPEv-GURolfl5Lx_uQuj2DR6Zd8lJnrEtKbxJr3o4KA&s')"></div>
+                        <div class="author-name">#NICKNAME#</div>
+                    </div>
                     <div class="story-name">Название, бла бла бла бла бла</div>
                     <div class="story-date"><?= date("d.m.Y") ?></div>
                     <div class="genres-and-vote">
@@ -56,8 +61,13 @@
                             <div class="author-name">#NICKNAME#</div>
                         </div>
                         <div class="reviews-text-container">
+                            <div class="author-container mobile">
+                                <div class="author-avatar"
+                                     style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxXBKDAHjWPEv-GURolfl5Lx_uQuj2DR6Zd8lJnrEtKbxJr3o4KA&s')"></div>
+                                <div class="author-name">#NICKNAME#</div>
+                            </div>
                             <div class="review-text">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, rerum!
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque debitis error fugit nihil, perspiciatis sunt voluptates. Commodi culpa, debitis enim eveniet expedita iusto laboriosam modi quas rerum soluta. Ab atque culpa cumque debitis eligendi, error exercitationem facere id minus numquam porro repellendus saepe, temporibus vero voluptatibus? Ab accusamus architecto, beatae deserunt earum sapiente sit. Aperiam asperiores cumque deserunt distinctio, doloribus eius error excepturi maiores nulla reprehenderit soluta sunt, ut voluptate. Accusantium aliquid animi asperiores aut consectetur consequuntur eveniet ex exercitationem id magni natus, odio provident, qui quis quod sequi suscipit voluptatibus? A adipisci aliquid deleniti id labore molestiae porro quas.
                             </div>
                             <div class="review-tools">
                                 <div class="btn">Ответить</div>

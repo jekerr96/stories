@@ -3,11 +3,15 @@ import "can-construct-super";
 import "@fancyapps/fancybox";
 import {fancyboxOptions} from "../helpers/fancybox";
 import tippy from "tippy.js";
+import {device} from "../helpers/device";
 
 const BasePage = Control.extend({
     defaults: {}
 }, {
     init() {
+        this.stickyMessage = this.element.querySelector(".js-sticky-message");
+        this.showStickyMessage();
+        if (device.isTouch()) document.documentElement.classList.add("is-touch");
         this.scrollTop = this.element.querySelector(".js-to-top");
         this.checkScroll();
 
@@ -70,7 +74,15 @@ const BasePage = Control.extend({
         } else {
             this.scrollTop.classList.remove("hidden");
         }
-    }
+    },
+
+    showStickyMessage() {
+        this.stickyMessage.classList.add("active");
+
+        setTimeout(() => {
+            this.stickyMessage.classList.remove("active");
+        }, 3000);
+    },
 });
 
 export {BasePage};

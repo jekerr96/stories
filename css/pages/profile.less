@@ -130,4 +130,62 @@
             transform-origin: 25% center;
         }
     }
+
+    @media @media-sm {
+        .tabs-container {
+            .tabs-wrapper {
+                flex-direction: column;
+                margin-bottom: 20px;
+            }
+
+            .tab {
+                border-radius: 5px;
+            }
+        }
+
+        .tab-author-wrapper {
+            flex-direction: column;
+        }
+
+        .list-authors {
+            flex-direction: row;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .author-card {
+            width: 50%;
+            box-sizing: border-box;
+            border-radius: 5px;
+            margin: 5px 0;
+
+            .avatar {
+                width: 30px;
+                height: 30px;
+            }
+
+            .author-name {
+                font-size: 12px;
+            }
+
+            .arrow {
+                display: none;
+            }
+        }
+
+        .author-stories {
+            padding: 0;
+            border: none;
+        }
+    }
+
+    @media @media-xs {
+        .profile-container {
+            padding: 0;
+        }
+
+        .author-card {
+            width: 100%;
+        }
+    }
 }

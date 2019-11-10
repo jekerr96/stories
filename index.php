@@ -3,10 +3,10 @@
     <div class="container">
         <div class="content-wrapper">
             <div class="genres">
-                <div class="genres-title">Поиск по жанрам</div>
-                <div class="genres-wrapper">
+                <div class="genres-title js-genres-toggle-btn"><span>Поиск по жанрам</span></div>
+                <div class="genres-wrapper js-toggle-genres" style="display: none;">
                     <? for ($i = 0; $i < 20; $i++): ?>
-                        <a href="javascript:void(0)" class="js-genre"><span>Жанр <?= $i ?></span><span><i class="plus js-plus">+</i><i class="minus js-minus">-</i></span></a>
+                        <a href="javascript:void(0)" class="js-genre"><span class="genre-name">Жанр <?= $i ?></span><span class="genre-actions"><i class="plus js-plus">+</i><i class="minus js-minus">-</i></span></a>
                     <? endfor; ?>
                 </div>
             </div>

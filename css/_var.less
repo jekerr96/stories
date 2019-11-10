@@ -10,6 +10,24 @@
 @darkHex: #11151e;
 @mainColor: fade(darken(@darkColor, 10%), 50%);
 
+@screen-xxl: 1440px;
+@screen-xl: 1240px;
+@screen-md: 1024px;
+@screen-sm: 768px;
+@screen-xs: 480px;
+
+@screen-xs-max: @screen-xs - 1;
+@screen-sm-max: @screen-sm - 1;
+@screen-md-max: @screen-md - 1;
+@screen-xl-max: @screen-xl - 1;
+@screen-xxl-max: @screen-xxl - 1;
+
+@media-xs: ~'(max-width: @{screen-xs-max})';
+@media-sm: ~'(max-width: @{screen-sm-max})';
+@media-md: ~'(max-width: @{screen-md-max})';
+@media-xl: ~'(max-width: @{screen-xl-max})';
+@media-xxl: ~'(max-width: @{screen-xxl-max})';
+
 .pseudo() {
     content: '';
     position: absolute;

@@ -1,4 +1,4 @@
-<html>
+<html class="white">
 <head>
     <link rel="stylesheet" href="/css/style.css?<?= filemtime($_SERVER['DOCUMENT_ROOT'] . "/css/style.css") ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,7 +28,7 @@
                                 <a href="/write/">Написать историю</a>
                                 <a href="javascript:void(0)" data-href="/partials/support.php" class="js-fancy">Служба поддержки</a>
                                 <a href="/settings/">Настройки</a>
-                                <a href="javascript:void(0)" data-href="/partials/exit.php" class="js-fancy">Выход</a>
+                                <a href="javascript:void(0)" data-href="/partials/success.php" class="js-fancy">Выход</a>
                             </div>
                         </div>
                     <? endif; ?>
