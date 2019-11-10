@@ -3,19 +3,31 @@
 namespace local\db;
 
 use local\DBConnect;
+use local\Helper;
 
 class ElementBase {
-    protected $selectFields = ["ID"];
-
+    protected $selectFields = [];
     protected $filter = [];
-    protected $sort = ["ID"];
+    protected $sort = [];
     protected $limit;
     protected $rowClass;
     protected $tableName;
     protected $dbh;
+    protected $pagen = "";
+    protected $relativeTables = [];
 
     public function __construct() {
+        array_unshift($this->selectFields, $this->getTable() . ".ID as ID");
         $this->dbh = DBConnect::getConnect();
+    }
+
+    public function tableName($name) {
+        $this->tableName = $name;
+        return $this;
+    }
+
+    public function getTable() {
+        return $this->tableName;
     }
 
     public function select(array $select, $clear = false) {
@@ -48,8 +60,10 @@ class ElementBase {
         return $this;
     }
 
+
     /**
      * @param int $limit
+     * @return $this
      */
     public function limit(int $limit) {
         $this->limit = $limit;
@@ -57,6 +71,40 @@ class ElementBase {
         return $this;
     }
 
+    /**
+     * @param $count
+     * @param $page
+     * @return $this
+     */
+    public function page($count, $page) {
+        if ($page == 1) {
+            $this->limit = $count;
+        } else {
+            $start = $count * $page - $count;
+            $this->limit = "$start, $count";
+        }
+
+        $this->setPagen($count, $page, $this->getCount());
+        return $this;
+    }
+
+    /**
+     * @param $count
+     * @param $page
+     * @param $all
+     */
+    protected function setPagen($count, $page, $all) {
+        ob_start();
+        Helper::render("/partials/pagination.php", ["COUNT" => $count, "PAGE" => $page, "ALL" => $all]);
+        $this->pagen = ob_get_clean();
+    }
+
+    /**
+     * @return string
+     */
+    public function getPagen() {
+        return $this->pagen;
+    }
 
     /**
      * @return array
@@ -80,6 +128,47 @@ class ElementBase {
         return $rows;
     }
 
+    public function getCount() {
+        $filter = $this->prepareFilter();
+        $innerJoin = $this->prepareInnerJoin();
+
+        $sql = "SELECT COUNT(*) as COUNT FROM " . $this->tableName . $innerJoin . $filter;
+        echo $sql;
+        /** @var \PDOStatement $stmt */
+        $stmt  = $this->dbh->query($sql);
+        $count = $stmt->fetch()["COUNT"];
+
+        return $count;
+    }
+
+    protected function prepareFilter() {
+        $filter = " WHERE 1=1";
+
+        foreach ($this->filter as $key => $item) {
+            if (is_array($item) && empty($item)) continue;
+
+            if (is_array($item)) {
+                $filter .= " AND " . $key . " IN (" . implode(", ", $item) . ")";
+            } else {
+                $filter .= " AND " . $key . "=" . $item;
+            }
+        }
+
+        return $filter;
+    }
+
+    protected function prepareInnerJoin() {
+        $innerJoin = "";
+
+        if (!empty($this->relativeTables)) {
+            foreach ($this->relativeTables as $table => $tableKey) {
+                $innerJoin .= " INNER JOIN " . $table . " ON " . $table . "." . $tableKey . "=" . $this->getTable() . ".ID";
+            }
+        }
+
+        return $innerJoin;
+    }
+
     protected function prepareSql() {
         if (!$this->tableName) {
             ob_clean();
@@ -91,11 +180,7 @@ class ElementBase {
             echo "Не указан класс Row"; die();
         }
 
-        $filter = " WHERE 1=1";
-
-        foreach ($this->filter as $key => $item) {
-            $filter .= " AND " . $key . "=" . $item;
-        }
+        $filter = $this->prepareFilter();
 
         $limit = "";
 
@@ -113,7 +198,9 @@ class ElementBase {
             $orderBy = " ORDER BY " . mb_substr($orderBy, 1);
         }
 
-        $sql = "SELECT " . implode(", ", $this->selectFields) . " FROM " . $this->tableName . $filter . $orderBy . $limit;
+        $innerJoin = $this->prepareInnerJoin();
+
+        $sql = "SELECT " . implode(", ", $this->selectFields) . " FROM " . $this->tableName . $innerJoin . $filter . " GROUP BY ID" .  $orderBy . $limit;
         return $sql;
     }
 }
