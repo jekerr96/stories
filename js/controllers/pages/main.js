@@ -10,6 +10,7 @@ const MainPage = BasePage.extend({
             this.$element = $(this.element);
             this.$genres = this.$element.find(".js-toggle-genres");
             this.pushUrl = new PushDataToUrl();
+            this.$storiesContainer = this.$element.find(".js-list-stories");
 
         },
 
@@ -47,7 +48,10 @@ const MainPage = BasePage.extend({
                 this.pushUrl.add({key: "exclude", value: exclude});
             }
 
+            this.pushUrl.remove("page");
             this.pushUrl.add({key: "include", value: include});
+
+            this.getStories();
 
         },
 
@@ -85,12 +89,32 @@ const MainPage = BasePage.extend({
                 this.pushUrl.add({key: "include", value: include});
             }
 
+            this.pushUrl.remove("page");
             this.pushUrl.add({key: "exclude", value: exclude});
+
+            this.getStories();
         },
 
         ".js-genres-toggle-btn click"(el) {
             el.classList.toggle("active");
             this.$genres.slideToggle();
+        },
+
+        getStories() {
+            let urlParams = new URLSearchParams(window.location.search);
+            this.$storiesContainer.fadeOut();
+
+            $.ajax({
+                url: this.$storiesContainer.data("url") + "?" + urlParams.toString(),
+                method: "post",
+                processData: false,
+                success: (data) => {
+                    this.$storiesContainer.html(data).stop(true, true).fadeIn();
+                },
+                error: (data) => {
+                    this.$storiesContainer.stop(true, true).fadeIn();
+                }
+            });
         }
     });
 

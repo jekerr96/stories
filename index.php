@@ -2,25 +2,19 @@
 use local\db\Story\Element as StoryElement;
 use local\Helper;
 
-$include = [];
-if ($_GET["include"]) {
-    $includeParams = explode(",", $_GET["include"]);
-} else {
-    $includeParams = [];
-}
-
-
-$exclude = [];
+$arrExclude    = [];
+$arrInclude    = [];
+$includeParams = explode(",", $_GET["include"]);
 $excludeParams = explode(",", $_GET["exclude"]);
 
 foreach ($includeParams as $item) {
-    $include[(int)$item] = $item;
+    if (!$item) continue;
+    $arrInclude[(int)$item] = $item;
 }
 
-print_r($includeParams);
-
 foreach ($excludeParams as $item) {
-    $exclude[(int)$item] = $item;
+    if (!$item) continue;
+    $arrExclude[(int)$item] = $item;
 }
 
 $pageType = "main" ?>
@@ -32,29 +26,32 @@ $pageType = "main" ?>
                 <div class="genres-wrapper js-toggle-genres" style="display: none;">
                     <?
                     $genreModel = new GenreElement();
-                    $genres = $genreModel->getList();
+                    $genres     = $genreModel->getList();
                     foreach ($genres as $genre): ?>
                         <a href="javascript:void(0)" class="js-genre">
                             <span class="genre-name"><?= $genre->NAME ?></span>
                             <span class="genre-actions">
-                                <i class="plus js-plus<?= $include[$genre->ID] ? " active" : "" ?>" data-id="<?= $genre->ID ?>">+</i>
-                                <i class="minus js-minus<?= $exclude[$genre->ID] ? " active" : "" ?>" data-id="<?= $genre->ID ?>">-</i>
+                                <i class="plus js-plus<?= $arrInclude[$genre->ID] ? " active" : "" ?>"
+                                   data-id="<?= $genre->ID ?>">+</i>
+                                <i class="minus js-minus<?= $arrExclude[$genre->ID] ? " active" : "" ?>"
+                                   data-id="<?= $genre->ID ?>">-</i>
                             </span>
                         </a>
                     <? endforeach; ?>
                 </div>
             </div>
-            <div class="list-stories">
+            <div class="list-stories js-list-stories" data-url="/ajax/stories/index.php">
                 <?
                 $storyModel = new StoryElement();
-                $stories = $storyModel->filter(["STORIES_GENRES.ID_GENRES" => $include])->page(20, Helper::getCurPage())->getList();
+                $stories    = $storyModel->getStoriesWithFilter();
+
                 foreach ($stories as $story): ?>
                     <? Helper::render("/partials/story-item.php", [
                         "item" => $story,
                     ]); ?>
                 <? endforeach; ?>
+                <?= $storyModel->getPagen() ?>
             </div>
         </div>
-        <?= $storyModel->getPagen() ?>
     </div>
 <? include "template/footer.php" ?>

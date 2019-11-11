@@ -18,7 +18,7 @@ class RowBase {
             /** @var ElementBase $model */
             $model = new $field[0];
             $tableName = $field[3];
-            $items = $model->select(["*"], true)->tableName($tableName)->filter([$fieldName => $id])->getList();
+            $items = $model->select(["*"], true, false)->tableName($tableName)->filter([$fieldName => $id])->getList();
 
             $ids = [];
 

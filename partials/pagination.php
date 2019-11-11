@@ -6,6 +6,10 @@
     $startDots = false;
     $endDots   = false;
 
+    if ($curPage > $count) $curPage = 1;
+
+    if ($count < 2) return;
+
     if ($curPage - 2 > 1) {
         $start = $curPage - 2;
     } else {
@@ -29,7 +33,7 @@
     <? if ($curPage && $curPage > 1): ?>
         <a href="<?= Helper::getUrl(["page" => ($curPage - 1)]) ?>" class="arrow left"></a>
     <? endif; ?>
-    <? if ($curPage != $count): ?>
+    <? if ($count !== 1): ?>
         <? if ($curPage == 1): ?>
             <span class="active">1</span>
         <? else: ?>

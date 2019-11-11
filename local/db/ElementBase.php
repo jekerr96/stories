@@ -8,13 +8,14 @@ use local\Helper;
 class ElementBase {
     protected $selectFields = [];
     protected $filter = [];
-    protected $sort = [];
+    protected $sort = ["ID" => "DESC"];
     protected $limit;
     protected $rowClass;
     protected $tableName;
     protected $dbh;
     protected $pagen = "";
     protected $relativeTables = [];
+    protected $groupBy = ["ID"];
 
     public function __construct() {
         array_unshift($this->selectFields, $this->getTable() . ".ID as ID");
@@ -23,6 +24,7 @@ class ElementBase {
 
     public function tableName($name) {
         $this->tableName = $name;
+
         return $this;
     }
 
@@ -30,9 +32,13 @@ class ElementBase {
         return $this->tableName;
     }
 
-    public function select(array $select, $clear = false) {
+    public function select(array $select, $clear = false, $addId = true) {
         if ($clear) {
             $this->selectFields = $select;
+
+            if ($addId) {
+                array_unshift($this->selectFields, $this->getTable() . ".ID as ID");
+            }
         } else {
             $this->selectFields = array_merge($this->selectFields, $select);
         }
@@ -44,6 +50,10 @@ class ElementBase {
         if ($clear) {
             $this->filter = $filter;
         } else {
+            if ($filter["STRING"]) {
+                $this->filter["STRING"] .= " " . $filter["STRING"];
+                unset($filter["STRING"]);
+            }
             $this->filter = array_merge($this->filter, $filter);
         }
 
@@ -80,11 +90,12 @@ class ElementBase {
         if ($page == 1) {
             $this->limit = $count;
         } else {
-            $start = $count * $page - $count;
+            $start       = $count * $page - $count;
             $this->limit = "$start, $count";
         }
 
         $this->setPagen($count, $page, $this->getCount());
+
         return $this;
     }
 
@@ -110,12 +121,12 @@ class ElementBase {
      * @return array
      */
     public function getList() {
-        $sql = $this->prepareSql();
+        $sql  = $this->prepareSql();
         $rows = [];
 
         /** @var \PDOStatement $stmt */
         $stmt = $this->dbh->query($sql);
-        while($row = $stmt->fetch()){
+        while ($row = $stmt->fetch()) {
             $classRow = new $this->rowClass;
 
             foreach ($row as $field => $rowItem) {
@@ -129,15 +140,15 @@ class ElementBase {
     }
 
     public function getCount() {
-        $filter = $this->prepareFilter();
+        $select = $this->prepareSelect();
+        $filter    = $this->prepareFilter();
         $innerJoin = $this->prepareInnerJoin();
+        $groupBy = $this->prepareGroupBy();
 
-        $sql = "SELECT COUNT(*) as COUNT FROM " . $this->tableName . $innerJoin . $filter;
-        echo $sql;
+        $sql = $select . " FROM " . $this->tableName . $innerJoin . $filter . $groupBy;
         /** @var \PDOStatement $stmt */
         $stmt  = $this->dbh->query($sql);
-        $count = $stmt->fetch()["COUNT"];
-
+        $count = $stmt->rowCount();
         return $count;
     }
 
@@ -147,10 +158,19 @@ class ElementBase {
         foreach ($this->filter as $key => $item) {
             if (is_array($item) && empty($item)) continue;
 
+            if ($key == "STRING") {
+                if (!trim($item)) {
+                    continue;
+                }
+
+                $filter .= " AND $item";
+                continue;
+            }
+
             if (is_array($item)) {
-                $filter .= " AND " . $key . " IN (" . implode(", ", $item) . ")";
+                $filter .= " AND  $key IN (" . implode(", ", $item) . ")";
             } else {
-                $filter .= " AND " . $key . "=" . $item;
+                $filter .= " AND $key = $item";
             }
         }
 
@@ -172,15 +192,19 @@ class ElementBase {
     protected function prepareSql() {
         if (!$this->tableName) {
             ob_clean();
-            echo "Не указана таблица"; die();
+            echo "Не указана таблица";
+            die();
         }
 
         if (!$this->rowClass) {
             ob_clean();
-            echo "Не указан класс Row"; die();
+            echo "Не указан класс Row";
+            die();
         }
 
+        $select = $this->prepareSelect();
         $filter = $this->prepareFilter();
+        $groupBy = $this->prepareGroupBy();
 
         $limit = "";
 
@@ -200,7 +224,33 @@ class ElementBase {
 
         $innerJoin = $this->prepareInnerJoin();
 
-        $sql = "SELECT " . implode(", ", $this->selectFields) . " FROM " . $this->tableName . $innerJoin . $filter . " GROUP BY ID" .  $orderBy . $limit;
+        $sql =  $select . " FROM " . $this->tableName . $innerJoin . $filter . $groupBy . $orderBy . $limit;
+        return $sql;
+    }
+
+    protected function prepareSelect() {
+        return "SELECT " . implode(", ", $this->selectFields);
+    }
+
+    /**
+     * @return string
+     */
+    protected function prepareGroupBy() {
+        $groupBy = "";
+
+        foreach ($this->sort as $key => $sort) {
+            $groupBy .= ", " . $key . " " . $sort;
+        }
+
+        if ($groupBy) {
+            $groupBy = " GROUP BY " . mb_substr($groupBy, 1);
+        }
+
+        return $groupBy;
+    }
+
+    public function subQuery() {
+        $sql = $this->prepareSql();
         return $sql;
     }
 }
