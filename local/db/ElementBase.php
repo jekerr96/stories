@@ -13,7 +13,8 @@ class ElementBase {
     protected $rowClass;
     protected $tableName;
     protected $dbh;
-    protected $pagen = "";
+    protected $pagen = [];
+    protected $pagenName = "page";
     protected $relativeTables = [];
     protected $groupBy = ["ID"];
 
@@ -81,12 +82,14 @@ class ElementBase {
         return $this;
     }
 
+
     /**
      * @param $count
      * @param $page
+     * @param string $pagenName
      * @return $this
      */
-    public function page($count, $page) {
+    public function page($count, $page, $pagenName = "page") {
         if ($page == 1) {
             $this->limit = $count;
         } else {
@@ -94,27 +97,31 @@ class ElementBase {
             $this->limit = "$start, $count";
         }
 
-        $this->setPagen($count, $page, $this->getCount());
+        $this->setPagen($count, $page, $this->getCount(), $pagenName);
 
         return $this;
     }
+
 
     /**
      * @param $count
      * @param $page
      * @param $all
+     * @param $name
      */
-    protected function setPagen($count, $page, $all) {
+    protected function setPagen($count, $page, $all, $name) {
         ob_start();
-        Helper::render("/partials/pagination.php", ["COUNT" => $count, "PAGE" => $page, "ALL" => $all]);
-        $this->pagen = ob_get_clean();
+        Helper::render("/partials/pagination.php", ["COUNT" => $count, "PAGE" => $page, "ALL" => $all, "PAGEN_NAME" => $name]);
+        $this->pagen[$name] = ob_get_clean();
     }
 
+
     /**
-     * @return string
+     * @param string $name
+     * @return mixed
      */
-    public function getPagen() {
-        return $this->pagen;
+    public function getPagen($name = "page") {
+        return $this->pagen[$name];
     }
 
     /**

@@ -26,8 +26,12 @@ class Helper {
         return parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH) . $uriParams;
     }
 
-    public static function getCurPage() {
-        return (int)$_GET["page"] ?: 1;
+    /**
+     * @param string $name
+     * @return int
+     */
+    public static function getCurPage($name = "page") {
+        return (int)$_GET[$name] ?: 1;
     }
 
     private static function getRenderer() {

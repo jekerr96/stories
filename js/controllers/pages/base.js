@@ -4,6 +4,7 @@ import "@fancyapps/fancybox";
 import {fancyboxOptions} from "../helpers/fancybox";
 import tippy from "tippy.js";
 import {device} from "../helpers/device";
+import Pagination from "../partials/pagination";
 
 const BasePage = Control.extend({
     defaults: {}
@@ -14,6 +15,7 @@ const BasePage = Control.extend({
         if (device.isTouch()) document.documentElement.classList.add("is-touch");
         this.scrollTop = this.element.querySelector(".js-to-top");
         this.checkScroll();
+        new Pagination(this.element);
 
         this.headerActions = this.element.querySelector(".js-header-actions");
 

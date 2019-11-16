@@ -3,9 +3,8 @@ global $USER;
 /** @var \local\db\Story\Row $item */
 $item = $this->item; ?>
 <div class="story-item">
-    <a href="<?= $item->getSrc() ?>"
-       class="story-name underline"><?= $item->NAME ?></a><span
-            class="rating">5</span>
+    <a href="<?= $item->getSrc() ?>" class="story-name underline"><?= $item->NAME ?></a>
+    <span class="rating">5</span>
     <div class="story-preview"><?= $item->PREVIEW ?></div>
     <div class="list-genres">
         <? foreach ($item->GENRES as $genre): ?>

@@ -1,4 +1,7 @@
-<? $pageType = "profile" ?>
+<? $pageType = "profile";
+
+use local\db\Story\Element as StoryElement;
+use local\Helper; ?>
 <? include $_SERVER['DOCUMENT_ROOT'] . "/template/header.php" ?>
 <div class="container">
     <div class="profile-container">
@@ -27,44 +30,76 @@
                                 </div>
                             <? endfor; ?>
                         </div>
-                        <div class="author-stories">
-                            <div class="list-stories">
-                                <? for ($i = 0; $i < 10; $i++): ?>
-                                    <? require $_SERVER["DOCUMENT_ROOT"] . "/partials/story-item.php" ?>
-                                <? endfor; ?>
+                        <div class="author-stories js-ajax-pagination">
+                            <div class="list-stories js-ajax-container">
+                                <?
+                                $storyModel = new StoryElement();
+                                $stories    = $storyModel->page(2, Helper::getCurPage("page2"), "page2")->getList();
+
+                                foreach ($stories as $story): ?>
+                                    <? Helper::render("/partials/story-item.php", [
+                                        "item" => $story,
+                                    ]); ?>
+                                <? endforeach; ?>
+                                <?= $storyModel->getPagen("page2") ?>
                             </div>
-                            <? require $_SERVER["DOCUMENT_ROOT"] . "/partials/pagination.php" ?>
                         </div>
                     </div>
                 </div>
                 <div class="bookmark js-tabs__content">
                     <div class="list-stories">
-                        <? for ($i = 0; $i < 10; $i++): ?>
-                            <? require $_SERVER["DOCUMENT_ROOT"] . "/partials/story-item.php" ?>
-                        <? endfor; ?>
-                    </div>
-                    <? require $_SERVER["DOCUMENT_ROOT"] . "/partials/pagination.php" ?>
-                </div>
-                <div class="js-tabs__content">
-                    <div class="list-stories">
-                        <? for ($i = 0; $i < 10; $i++): ?>
-                            <? require $_SERVER["DOCUMENT_ROOT"] . "/partials/story-item.php" ?>
-                        <? endfor; ?>
-                    </div>
-                </div>
-                <div class="js-tabs__content">
-                    <div class="list-stories">
-                        <? for ($i = 0; $i < 10; $i++): ?>
-                            <? require $_SERVER["DOCUMENT_ROOT"] . "/partials/story-item.php" ?>
-                        <? endfor; ?>
+                        <?
+                        $storyModel = new StoryElement();
+                        $stories    = $storyModel->page(2, Helper::getCurPage("page3"), "page3")->getList();
+
+                        foreach ($stories as $story): ?>
+                            <? Helper::render("/partials/story-item.php", [
+                                "item" => $story,
+                            ]); ?>
+                        <? endforeach; ?>
+                        <?= $storyModel->getPagen("page3") ?>
                     </div>
                 </div>
                 <div class="js-tabs__content">
                     <div class="list-stories">
-                        <? for ($i = 0; $i < 10; $i++): ?>
-                        <? //todo убрать кнопку читать, заменить на редактировать и опубликовать ?>
-                            <? require $_SERVER["DOCUMENT_ROOT"] . "/partials/story-item.php" ?>
-                        <? endfor; ?>
+                        <?
+                        $storyModel = new StoryElement();
+                        $stories    = $storyModel->getList();
+
+                        foreach ($stories as $story): ?>
+                            <? Helper::render("/partials/story-item.php", [
+                                "item" => $story,
+                            ]); ?>
+                        <? endforeach; ?>
+                        <?= $storyModel->getPagen() ?>
+                    </div>
+                </div>
+                <div class="js-tabs__content">
+                    <div class="list-stories">
+                        <?
+                        $storyModel = new StoryElement();
+                        $stories    = $storyModel->getList();
+
+                        foreach ($stories as $story): ?>
+                            <? Helper::render("/partials/story-item.php", [
+                                "item" => $story,
+                            ]); ?>
+                        <? endforeach; ?>
+                        <?= $storyModel->getPagen() ?>
+                    </div>
+                </div>
+                <div class="js-tabs__content">
+                    <div class="list-stories">
+                        <?
+                        $storyModel = new StoryElement();
+                        $stories    = $storyModel->getList();
+
+                        foreach ($stories as $story): ?>
+                            <? Helper::render("/partials/story-item.php", [
+                                "item" => $story,
+                            ]); ?>
+                        <? endforeach; ?>
+                        <?= $storyModel->getPagen() ?>
                     </div>
                 </div>
             </div>
