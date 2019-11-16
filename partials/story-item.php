@@ -1,4 +1,6 @@
-<? /** @var \local\db\Story\Row $item */
+<?
+global $USER;
+/** @var \local\db\Story\Row $item */
 $item = $this->item; ?>
 <div class="story-item">
     <a href="<?= $item->getSrc() ?>"
@@ -7,17 +9,17 @@ $item = $this->item; ?>
     <div class="story-preview"><?= $item->PREVIEW ?></div>
     <div class="list-genres">
         <? foreach ($item->GENRES as $genre): ?>
-            <a href="javascript:void(0)"><?= $genre->NAME ?></a>
+            <a href="<?= $genre->getSrc(); ?>"><?= $genre->NAME ?></a>
         <? endforeach; ?>
     </div>
     <div class="bottom-tools">
         <div class="buttons">
-<!--            --><?// if ($i == 2): ?>
-<!--                <div class="edit js-tippy" data-tippy-content="Редактировать"></div>-->
-<!--            --><?// else: ?>
+            <? if ($item->AUTHOR == $USER->ID): ?>
+                <div class="edit js-tippy" data-tippy-content="Редактировать"></div>
+            <? elseif ($USER->isAuth()): ?>
                 <div class="bookmark js-tippy" data-tippy-content="Добавить в закладки"></div>
                 <div class="read-late js-tippy" data-tippy-content="Прочитать позже"></div>
-<!--            --><?// endif; ?>
+            <? endif; ?>
         </div>
         <div class="date"><?= date("d.m.Y", strtotime($item->PUBLICATION_DATE)) ?></div>
     </div>

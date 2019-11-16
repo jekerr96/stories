@@ -7,6 +7,10 @@
 namespace local\db\Genre;
 
 
-class Row {
+use local\db\RowBase;
 
+class Row extends RowBase {
+    public function getSrc() {
+        return "/?include=" . $this->ID;
+    }
 }

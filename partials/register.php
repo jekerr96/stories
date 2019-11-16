@@ -9,7 +9,7 @@
             </label>
             <label>
                 <!--                <span class="error js-error" data-tippy-content="Неверный логин или пароль"></span>-->
-                <input type="password" name="password">
+                <input type="password" class="password" name="password">
                 <span>Пароль</span>
             </label>
             <label>

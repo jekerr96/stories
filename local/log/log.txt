@@ -1,0 +1,37 @@
+local\db\User\Row Object
+(
+    [isAuth:protected] => 
+    [autoloadFields:protected] => Array
+        (
+        )
+
+    [modelClass:protected] => 
+    [autoLoaded:protected] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 
+)
+Array
+(
+    [0] => 
+)
+Array
+(
+    [0] => 
+)
+Array
+(
+    [0] => 
+)
+Array
+(
+    [0] => 1
+)
+Array
+(
+    [0] => 1
+)

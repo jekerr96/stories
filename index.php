@@ -23,7 +23,7 @@ $pageType = "main" ?>
         <div class="content-wrapper">
             <div class="genres">
                 <div class="genres-title js-genres-toggle-btn"><span>Поиск по жанрам</span></div>
-                <div class="genres-wrapper js-toggle-genres" style="display: none;">
+                <div class="genres-wrapper js-toggle-genres" style="<?= $arrExclude || $arrInclude ? "" : "display: none;" ?>">
                     <?
                     $genreModel = new GenreElement();
                     $genres     = $genreModel->getList();

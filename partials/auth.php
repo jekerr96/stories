@@ -1,15 +1,14 @@
 <div class="popup popup-auth">
     <div class="popup-title">Вход</div>
     <div class="base-form">
-        <form action="javascript:void(0)" data-form-type="auth">
+        <form action="/ajax/auth/" data-form-type="auth">
+            <div class="top-errors js-errors"></div>
             <label>
-<!--                <span class="error js-error" data-tippy-content="Неверный логин или пароль"></span>-->
-                <input type="text" name="login" autocomplete="off">
+                <input type="text" name="login" required max="=50" maxlength="50" autocomplete="off">
                 <span>Логин</span>
             </label>
             <label>
-<!--                <span class="error js-error" data-tippy-content="Неверный логин или пароль"></span>-->
-                <input type="password" name="password">
+                <input type="password" max="50" maxlength="50" name="password">
                 <span>Пароль</span>
             </label>
             <div class="btn-wrapper">

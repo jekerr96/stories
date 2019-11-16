@@ -7,6 +7,7 @@
   "require": {
     "symfony/polyfill-mbstring": "^1.12",
     "ext-mbstring": "*",
-    "ext-pdo": "*"
+    "ext-pdo": "*",
+    "ext-json": "*"
   }
 }

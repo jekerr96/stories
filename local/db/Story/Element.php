@@ -9,7 +9,7 @@ use local\Helper;
 class Element extends ElementBase {
     protected $rowClass = Row::class;
     protected $tableName = "STORIES";
-    protected $selectFields = ["NAME", "PREVIEW", "DETAIL", "PUBLICATION_DATE"];
+    protected $selectFields = ["NAME", "PREVIEW", "DETAIL", "PUBLICATION_DATE", "AUTHOR"];
     protected $relativeTables = ["STORIES_GENRES" => "ID_STORIES"];
 
     public function getStoriesWithFilter() {
@@ -17,6 +17,7 @@ class Element extends ElementBase {
         $arrExclude = [];
         $includeParams = explode(",", $_GET["include"]);
         $excludeParams = explode(",", $_GET["exclude"]);
+        $search = $_GET["q"];
 
         foreach ($includeParams as $item) {
             if (!$item) continue;
@@ -49,6 +50,15 @@ class Element extends ElementBase {
             $filter .= "$includeFilter AND $excludeFilter";
         } else {
             $filter .= "$includeFilter $excludeFilter";
+        }
+
+        if ($search) {
+            if ($filter) {
+                $filter .= "NAME LIKE '%$search%'";
+            } else {
+                $filter .= "NAME LIKE '%$search%'";
+            }
+
         }
 
         $stories = $this->filter(["STRING" => $filter])->page(20, Helper::getCurPage())->getList();
