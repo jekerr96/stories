@@ -1,6 +1,7 @@
 <? $pageType = "profile";
 
 use local\db\Story\Element as StoryElement;
+use local\db\User\Element as UserElement;
 use local\Helper; ?>
 <? include $_SERVER['DOCUMENT_ROOT'] . "/template/header.php" ?>
 <div class="container">
@@ -19,40 +20,64 @@ use local\Helper; ?>
                 <div class="js-tabs__content active">
                     <div class="tab-author-wrapper">
                         <div class="list-authors">
-                            <? for ($i = 0; $i < 10; $i++): ?>
-                                <div class="author-card<?= $i == 1 ? " active" : "" ?>">
+                            <?
+                            $model         = new UserElement();
+                            $users         = $model->getList();
+                            $currentAuthor = (int)$_GET["author"];
+                            ?>
+                            <? foreach ($users as $key => $user): ?>
+                                <div class="author-card js-author<?= $user->ID == $currentAuthor ? " active" : "" ?>"
+                                     data-id="<?= $user->ID ?>">
                                     <div class="avatar-container">
                                         <div class="avatar"
-                                             style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxXBKDAHjWPEv-GURolfl5Lx_uQuj2DR6Zd8lJnrEtKbxJr3o4KA&s')"></div>
+                                             style="background-image: url('<?= $user->AVATAR ?>')"></div>
                                     </div>
-                                    <div class="author-name">#NICKNAME#</div>
+                                    <div class="author-name"><?= $user->LOGIN ?></div>
                                     <div class="arrow"></div>
                                 </div>
-                            <? endfor; ?>
+                            <? endforeach; ?>
                         </div>
-                        <div class="author-stories js-ajax-pagination">
-                            <div class="list-stories js-ajax-container">
+                        <div class="author-stories js-author-stories">
+                            <div class="list-stories js-ajax-container" data-name="page2">
                                 <?
-                                $storyModel = new StoryElement();
-                                $stories    = $storyModel->page(2, Helper::getCurPage("page2"), "page2")->getList();
+                                $storyModel    = new StoryElement();
+                                $filter        = [];
+                                $currentAuthor = (int)$_GET["author"];
+                                if ($currentAuthor) {
+                                    $filter["AUTHOR"] = $currentAuthor;
+                                }
 
-                                foreach ($stories as $story): ?>
-                                    <? Helper::render("/partials/story-item.php", [
-                                        "item" => $story,
-                                    ]); ?>
-                                <? endforeach; ?>
-                                <?= $storyModel->getPagen("page2") ?>
+                                if (!empty($filter)) {
+                                    $stories = $storyModel->filter($filter)
+                                        ->page(2, Helper::getCurPage("page2"), "page2")
+                                        ->getList();
+
+                                    foreach ($stories as $story): ?>
+                                        <? Helper::render("/partials/story-item.php", [
+                                            "item" => $story,
+                                        ]); ?>
+                                    <? endforeach; ?>
+                                    <?= $storyModel->getPagen("page2") ?>
+                                <? } ?>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="bookmark js-tabs__content">
-                    <div class="list-stories">
+                    <div class="list-stories js-ajax-container" data-name="page3">
                         <?
-                        $storyModel = new StoryElement();
-                        $stories    = $storyModel->page(2, Helper::getCurPage("page3"), "page3")->getList();
 
-                        foreach ($stories as $story): ?>
+                        $model = new UserElement();
+                        global $USER;
+                        $curUser = $model->filter(["ID" => $USER->ID])->getList();
+
+                        if (!empty($curUser)) {
+                            $curUser = $curUser[0];
+                        }
+                        
+                        file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/local/log/log.txt", print_r($curUser->FAVORITES, true), FILE_APPEND); //todo remove!
+
+                        foreach ($curUser->FAVORITES as $story): ?>
                             <? Helper::render("/partials/story-item.php", [
                                 "item" => $story,
                             ]); ?>
@@ -61,45 +86,45 @@ use local\Helper; ?>
                     </div>
                 </div>
                 <div class="js-tabs__content">
-                    <div class="list-stories">
+                    <div class="list-stories js-ajax-container" data-name="page4">
                         <?
                         $storyModel = new StoryElement();
-                        $stories    = $storyModel->getList();
+                        $stories    = $storyModel->page(2, Helper::getCurPage("page4"), "page4")->getList();
 
                         foreach ($stories as $story): ?>
                             <? Helper::render("/partials/story-item.php", [
                                 "item" => $story,
                             ]); ?>
                         <? endforeach; ?>
-                        <?= $storyModel->getPagen() ?>
+                        <?= $storyModel->getPagen("page4") ?>
                     </div>
                 </div>
                 <div class="js-tabs__content">
-                    <div class="list-stories">
+                    <div class="list-stories js-ajax-container" data-name="page5">
                         <?
                         $storyModel = new StoryElement();
-                        $stories    = $storyModel->getList();
+                        $stories    = $storyModel->page(2, Helper::getCurPage("page5"), "page5")->getList();
 
                         foreach ($stories as $story): ?>
                             <? Helper::render("/partials/story-item.php", [
                                 "item" => $story,
                             ]); ?>
                         <? endforeach; ?>
-                        <?= $storyModel->getPagen() ?>
+                        <?= $storyModel->getPagen("page5") ?>
                     </div>
                 </div>
                 <div class="js-tabs__content">
-                    <div class="list-stories">
+                    <div class="list-stories js-ajax-container" data-name="page6">
                         <?
                         $storyModel = new StoryElement();
-                        $stories    = $storyModel->getList();
+                        $stories    = $storyModel->page(2, Helper::getCurPage("page6"), "page6")->getList();
 
                         foreach ($stories as $story): ?>
                             <? Helper::render("/partials/story-item.php", [
                                 "item" => $story,
                             ]); ?>
                         <? endforeach; ?>
-                        <?= $storyModel->getPagen() ?>
+                        <?= $storyModel->getPagen("page6") ?>
                     </div>
                 </div>
             </div>

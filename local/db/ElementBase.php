@@ -8,7 +8,7 @@ use local\Helper;
 class ElementBase {
     protected $selectFields = [];
     protected $filter = [];
-    protected $sort = ["ID" => "DESC"];
+    protected $sort = [];
     protected $limit;
     protected $rowClass;
     protected $tableName;
@@ -20,6 +20,7 @@ class ElementBase {
 
     public function __construct() {
         array_unshift($this->selectFields, $this->getTable() . ".ID as ID");
+        $this->sort = array_merge([$this->getTable() . ".ID" => "DESC"], $this->sort);
         $this->dbh = DBConnect::getConnect();
     }
 
@@ -47,6 +48,13 @@ class ElementBase {
         return $this;
     }
 
+    /**
+     * @return array
+     */
+    public function getSelect() {
+        return $this->selectFields;
+    }
+
     public function filter(array $filter, $clear = false) {
         if ($clear) {
             $this->filter = $filter;
@@ -65,7 +73,17 @@ class ElementBase {
         if ($clear) {
             $this->sort = $sort;
         } else {
-            $this->sort = array_merge($this->filter, $sort);
+            $this->sort = array_merge($this->sort, $sort);
+        }
+
+        return $this;
+    }
+
+    public function groupBy(array $group, $clear = false) {
+        if ($clear) {
+            $this->groupBy = $group;
+        } else {
+            $this->groupBy = array_merge($this->sort, $group);
         }
 
         return $this;
@@ -127,8 +145,8 @@ class ElementBase {
     /**
      * @return array
      */
-    public function getList() {
-        $sql  = $this->prepareSql();
+    public function getList($useInnerJoin = false) {
+        $sql  = $this->prepareSql($useInnerJoin);
         $rows = [];
 
         /** @var \PDOStatement $stmt */
@@ -196,7 +214,7 @@ class ElementBase {
         return $innerJoin;
     }
 
-    protected function prepareSql() {
+    protected function prepareSql($useInnerJoin = false) {
         if (!$this->tableName) {
             ob_clean();
             echo "Не указана таблица";
@@ -229,7 +247,12 @@ class ElementBase {
             $orderBy = " ORDER BY " . mb_substr($orderBy, 1);
         }
 
-        $innerJoin = $this->prepareInnerJoin();
+        if ($useInnerJoin) {
+            $innerJoin = $this->prepareInnerJoin();
+        } else {
+            $innerJoin = "";
+        }
+
 
         $sql =  $select . " FROM " . $this->tableName . $innerJoin . $filter . $groupBy . $orderBy . $limit;
         return $sql;
@@ -245,8 +268,8 @@ class ElementBase {
     protected function prepareGroupBy() {
         $groupBy = "";
 
-        foreach ($this->sort as $key => $sort) {
-            $groupBy .= ", " . $key . " " . $sort;
+        foreach ($this->groupBy as $group) {
+            $groupBy .= " " . $group;
         }
 
         if ($groupBy) {

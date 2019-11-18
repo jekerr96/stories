@@ -11,5 +11,3 @@ if ($_SESSION["AUTH"]) {
 } else {
     $USER = new Row();
 }
-
-file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/local/log/log.txt", print_r([$USER->isAuth()], true), FILE_APPEND); //todo remove!

@@ -10,6 +10,7 @@ const BasePage = Control.extend({
     defaults: {}
 }, {
     init() {
+        this.$element = $(this.element);
         this.stickyMessage = this.element.querySelector(".js-sticky-message");
         this.showStickyMessage();
         if (device.isTouch()) document.documentElement.classList.add("is-touch");

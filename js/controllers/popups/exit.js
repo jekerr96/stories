@@ -1,4 +1,3 @@
-import 'can-construct-super';
 import PopupBase from "./base";
 
 const PopupExit = PopupBase.extend(
@@ -9,8 +8,7 @@ const PopupExit = PopupBase.extend(
     },
     {
         init() {
-            this._super();
-            console.log("init");
+            this._super(); 
         },
 
         ".js-exit click"() {

@@ -1,289 +1,750 @@
-local\db\User\Row Object
+Array
 (
-    [isAuth:protected] => 
-    [autoloadFields:protected] => Array
+    [0] => local\db\Story\Row Object
         (
+            [modelClass:protected] => local\db\Story\Element
+            [autoloadFields:protected] => Array
+                (
+                    [GENRES] => Array
+                        (
+                            [0] => local\db\Genre\Element
+                            [1] => ID_STORIES
+                            [2] => ID_GENRES
+                            [3] => STORIES_GENRES
+                        )
+
+                )
+
+            [autoLoaded:protected] => Array
+                (
+                )
+
+            [ID] => 2
+            [NAME] => Тестовая статья 2
+            [PREVIEW] => превью
+            [DETAIL] => детальный
+            [PUBLICATION_DATE] => 2019-11-10 17:17:17
+            [AUTHOR] => 1
         )
 
-    [modelClass:protected] => 
-    [autoLoaded:protected] => Array
+)
+Array
+(
+    [0] => local\db\Story\Row Object
         (
+            [modelClass:protected] => local\db\Story\Element
+            [autoloadFields:protected] => Array
+                (
+                    [GENRES] => Array
+                        (
+                            [0] => local\db\Genre\Element
+                            [1] => ID_STORIES
+                            [2] => ID_GENRES
+                            [3] => STORIES_GENRES
+                        )
+
+                )
+
+            [autoLoaded:protected] => Array
+                (
+                )
+
+            [ID] => 2
+            [NAME] => Тестовая статья 2
+            [PREVIEW] => превью
+            [DETAIL] => детальный
+            [PUBLICATION_DATE] => 2019-11-10 17:17:17
+            [AUTHOR] => 1
         )
 
 )
 Array
 (
-    [0] => 
-)
-Array
-(
-    [0] => 
-)
-Array
-(
-    [0] => 
-)
-Array
-(
-    [0] => 
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
-)
-Array
-(
-    [0] => 1
+    [0] => local\db\Story\Row Object
+        (
+            [modelClass:protected] => local\db\Story\Element
+            [autoloadFields:protected] => Array
+                (
+                    [GENRES] => Array
+                        (
+                            [0] => local\db\Genre\Element
+                            [1] => ID_STORIES
+                            [2] => ID_GENRES
+                            [3] => STORIES_GENRES
+                        )
+
+                )
+
+            [autoLoaded:protected] => Array
+                (
+                )
+
+            [ID] => 2
+            [NAME] => Тестовая статья 2
+            [PREVIEW] => превью
+            [DETAIL] => детальный
+            [PUBLICATION_DATE] => 2019-11-10 17:17:17
+            [AUTHOR] => 1
+        )
+
+)
+Array
+(
+    [0] => local\db\Story\Row Object
+        (
+            [modelClass:protected] => local\db\Story\Element
+            [autoloadFields:protected] => Array
+                (
+                    [GENRES] => Array
+                        (
+                            [0] => local\db\Genre\Element
+                            [1] => ID_STORIES
+                            [2] => ID_GENRES
+                            [3] => STORIES_GENRES
+                        )
+
+                )
+
+            [autoLoaded:protected] => Array
+                (
+                )
+
+            [ID] => 2
+            [NAME] => Тестовая статья 2
+            [PREVIEW] => превью
+            [DETAIL] => детальный
+            [PUBLICATION_DATE] => 2019-11-10 17:17:17
+            [AUTHOR] => 1
+        )
+
+)
+Array
+(
+    [0] => local\db\Story\Row Object
+        (
+            [modelClass:protected] => local\db\Story\Element
+            [autoloadFields:protected] => Array
+                (
+                    [GENRES] => Array
+                        (
+                            [0] => local\db\Genre\Element
+                            [1] => ID_STORIES
+                            [2] => ID_GENRES
+                            [3] => STORIES_GENRES
+                        )
+
+                )
+
+            [autoLoaded:protected] => Array
+                (
+                )
+
+            [ID] => 2
+            [NAME] => Тестовая статья 2
+            [PREVIEW] => превью
+            [DETAIL] => детальный
+            [PUBLICATION_DATE] => 2019-11-10 17:17:17
+            [AUTHOR] => 1
+        )
+
+)
+Array
+(
+    [0] => local\db\Story\Row Object
+        (
+            [modelClass:protected] => local\db\Story\Element
+            [autoloadFields:protected] => Array
+                (
+                    [GENRES] => Array
+                        (
+                            [0] => local\db\Genre\Element
+                            [1] => ID_STORIES
+                            [2] => ID_GENRES
+                            [3] => STORIES_GENRES
+                        )
+
+                )
+
+            [autoLoaded:protected] => Array
+                (
+                )
+
+            [ID] => 2
+            [NAME] => Тестовая статья 2
+            [PREVIEW] => превью
+            [DETAIL] => детальный
+            [PUBLICATION_DATE] => 2019-11-10 17:17:17
+            [AUTHOR] => 1
+        )
+
+)
+Array
+(
+    [0] => local\db\Story\Row Object
+        (
+            [modelClass:protected] => local\db\Story\Element
+            [autoloadFields:protected] => Array
+                (
+                    [GENRES] => Array
+                        (
+                            [0] => local\db\Genre\Element
+                            [1] => ID_STORIES
+                            [2] => ID_GENRES
+                            [3] => STORIES_GENRES
+                        )
+
+                )
+
+            [autoLoaded:protected] => Array
+                (
+                )
+
+            [ID] => 2
+            [NAME] => Тестовая статья 2
+            [PREVIEW] => превью
+            [DETAIL] => детальный
+            [PUBLICATION_DATE] => 2019-11-10 17:17:17
+            [AUTHOR] => 1
+        )
+
+)
+Array
+(
+    [0] => local\db\Story\Row Object
+        (
+            [modelClass:protected] => local\db\Story\Element
+            [autoloadFields:protected] => Array
+                (
+                    [GENRES] => Array
+                        (
+                            [0] => local\db\Genre\Element
+                            [1] => ID_STORIES
+                            [2] => ID_GENRES
+                            [3] => STORIES_GENRES
+                        )
+
+                )
+
+            [autoLoaded:protected] => Array
+                (
+                )
+
+            [ID] => 3
+            [NAME] => Тестовая статья 3
+            [PREVIEW] => превью
+            [DETAIL] => детальный
+            [PUBLICATION_DATE] => 2019-11-10 17:17:17
+            [AUTHOR] => 1
+        )
+
+)
+Array
+(
+    [0] => local\db\Story\Row Object
+        (
+            [modelClass:protected] => local\db\Story\Element
+            [autoloadFields:protected] => Array
+                (
+                    [GENRES] => Array
+                        (
+                            [0] => local\db\Genre\Element
+                            [1] => ID_STORIES
+                            [2] => ID_GENRES
+                            [3] => STORIES_GENRES
+                        )
+
+                )
+
+            [autoLoaded:protected] => Array
+                (
+                )
+
+            [ID] => 3
+            [NAME] => Тестовая статья 3
+            [PREVIEW] => превью
+            [DETAIL] => детальный
+            [PUBLICATION_DATE] => 2019-11-10 17:17:17
+            [AUTHOR] => 1
+        )
+
+)
+Array
+(
+    [0] => local\db\Story\Row Object
+        (
+            [modelClass:protected] => local\db\Story\Element
+            [autoloadFields:protected] => Array
+                (
+                    [GENRES] => Array
+                        (
+                            [0] => local\db\Genre\Element
+                            [1] => ID_STORIES
+                            [2] => ID_GENRES
+                            [3] => STORIES_GENRES
+                        )
+
+                )
+
+            [autoLoaded:protected] => Array
+                (
+                )
+
+            [ID] => 3
+            [NAME] => Тестовая статья 3
+            [PREVIEW] => превью
+            [DETAIL] => детальный
+            [PUBLICATION_DATE] => 2019-11-10 17:17:17
+            [AUTHOR] => 1
+        )
+
+)
+Array
+(
+    [0] => local\db\Story\Row Object
+        (
+            [modelClass:protected] => local\db\Story\Element
+            [autoloadFields:protected] => Array
+                (
+                    [GENRES] => Array
+                        (
+                            [0] => local\db\Genre\Element
+                            [1] => ID_STORIES
+                            [2] => ID_GENRES
+                            [3] => STORIES_GENRES
+                        )
+
+                )
+
+            [autoLoaded:protected] => Array
+                (
+                )
+
+            [ID] => 3
+            [NAME] => Тестовая статья 3
+            [PREVIEW] => превью
+            [DETAIL] => детальный
+            [PUBLICATION_DATE] => 2019-11-10 17:17:17
+            [AUTHOR] => 1
+        )
+
+)
+Array
+(
+    [0] => local\db\Story\Row Object
+        (
+            [modelClass:protected] => local\db\Story\Element
+            [autoloadFields:protected] => Array
+                (
+                    [GENRES] => Array
+                        (
+                            [0] => local\db\Genre\Element
+                            [1] => ID_STORIES
+                            [2] => ID_GENRES
+                            [3] => STORIES_GENRES
+                        )
+
+                )
+
+            [autoLoaded:protected] => Array
+                (
+                )
+
+            [ID] => 3
+            [NAME] => Тестовая статья 3
+            [PREVIEW] => превью
+            [DETAIL] => детальный
+            [PUBLICATION_DATE] => 2019-11-10 17:17:17
+            [AUTHOR] => 1
+        )
+
+)
+Array
+(
+    [0] => local\db\Story\Row Object
+        (
+            [modelClass:protected] => local\db\Story\Element
+            [autoloadFields:protected] => Array
+                (
+                    [GENRES] => Array
+                        (
+                            [0] => local\db\Genre\Element
+                            [1] => ID_STORIES
+                            [2] => ID_GENRES
+                            [3] => STORIES_GENRES
+                        )
+
+                )
+
+            [autoLoaded:protected] => Array
+                (
+                )
+
+            [ID] => 3
+            [NAME] => Тестовая статья 3
+            [PREVIEW] => превью
+            [DETAIL] => детальный
+            [PUBLICATION_DATE] => 2019-11-10 17:17:17
+            [AUTHOR] => 1
+        )
+
+)
+Array
+(
+    [0] => local\db\Story\Row Object
+        (
+            [modelClass:protected] => local\db\Story\Element
+            [autoloadFields:protected] => Array
+                (
+                    [GENRES] => Array
+                        (
+                            [0] => local\db\Genre\Element
+                            [1] => ID_STORIES
+                            [2] => ID_GENRES
+                            [3] => STORIES_GENRES
+                        )
+
+                )
+
+            [autoLoaded:protected] => Array
+                (
+                )
+
+            [ID] => 3
+            [NAME] => Тестовая статья 3
+            [PREVIEW] => превью
+            [DETAIL] => детальный
+            [PUBLICATION_DATE] => 2019-11-10 17:17:17
+            [AUTHOR] => 1
+        )
+
+)
+Array
+(
+    [0] => local\db\Story\Row Object
+        (
+            [modelClass:protected] => local\db\Story\Element
+            [autoloadFields:protected] => Array
+                (
+                    [GENRES] => Array
+                        (
+                            [0] => local\db\Genre\Element
+                            [1] => ID_STORIES
+                            [2] => ID_GENRES
+                            [3] => STORIES_GENRES
+                        )
+
+                )
+
+            [autoLoaded:protected] => Array
+                (
+                )
+
+            [ID] => 3
+            [NAME] => Тестовая статья 3
+            [PREVIEW] => превью
+            [DETAIL] => детальный
+            [PUBLICATION_DATE] => 2019-11-10 17:17:17
+            [AUTHOR] => 1
+        )
+
+)
+Array
+(
+    [0] => local\db\Story\Row Object
+        (
+            [modelClass:protected] => local\db\Story\Element
+            [autoloadFields:protected] => Array
+                (
+                    [GENRES] => Array
+                        (
+                            [0] => local\db\Genre\Element
+                            [1] => ID_STORIES
+                            [2] => ID_GENRES
+                            [3] => STORIES_GENRES
+                        )
+
+                )
+
+            [autoLoaded:protected] => Array
+                (
+                )
+
+            [ID] => 3
+            [NAME] => Тестовая статья 3
+            [PREVIEW] => превью
+            [DETAIL] => детальный
+            [PUBLICATION_DATE] => 2019-11-10 17:17:17
+            [AUTHOR] => 1
+        )
+
+)
+Array
+(
+    [0] => local\db\Story\Row Object
+        (
+            [modelClass:protected] => local\db\Story\Element
+            [autoloadFields:protected] => Array
+                (
+                    [GENRES] => Array
+                        (
+                            [0] => local\db\Genre\Element
+                            [1] => ID_STORIES
+                            [2] => ID_GENRES
+                            [3] => STORIES_GENRES
+                        )
+
+                )
+
+            [autoLoaded:protected] => Array
+                (
+                )
+
+            [ID] => 3
+            [NAME] => Тестовая статья 3
+            [PREVIEW] => превью
+            [DETAIL] => детальный
+            [PUBLICATION_DATE] => 2019-11-10 17:17:17
+            [AUTHOR] => 1
+        )
+
+)
+Array
+(
+    [0] => local\db\Story\Row Object
+        (
+            [modelClass:protected] => local\db\Story\Element
+            [autoloadFields:protected] => Array
+                (
+                    [GENRES] => Array
+                        (
+                            [0] => local\db\Genre\Element
+                            [1] => ID_STORIES
+                            [2] => ID_GENRES
+                            [3] => STORIES_GENRES
+                        )
+
+                )
+
+            [autoLoaded:protected] => Array
+                (
+                )
+
+            [ID] => 3
+            [NAME] => Тестовая статья 3
+            [PREVIEW] => превью
+            [DETAIL] => детальный
+            [PUBLICATION_DATE] => 2019-11-10 17:17:17
+            [AUTHOR] => 1
+        )
+
+)
+Array
+(
+    [0] => local\db\Story\Row Object
+        (
+            [modelClass:protected] => local\db\Story\Element
+            [autoloadFields:protected] => Array
+                (
+                    [GENRES] => Array
+                        (
+                            [0] => local\db\Genre\Element
+                            [1] => ID_STORIES
+                            [2] => ID_GENRES
+                            [3] => STORIES_GENRES
+                        )
+
+                )
+
+            [autoLoaded:protected] => Array
+                (
+                )
+
+            [ID] => 3
+            [NAME] => Тестовая статья 3
+            [PREVIEW] => превью
+            [DETAIL] => детальный
+            [PUBLICATION_DATE] => 2019-11-10 17:17:17
+            [AUTHOR] => 1
+        )
+
+)
+Array
+(
+    [0] => local\db\Story\Row Object
+        (
+            [modelClass:protected] => local\db\Story\Element
+            [autoloadFields:protected] => Array
+                (
+                    [GENRES] => Array
+                        (
+                            [0] => local\db\Genre\Element
+                            [1] => ID_STORIES
+                            [2] => ID_GENRES
+                            [3] => STORIES_GENRES
+                        )
+
+                )
+
+            [autoLoaded:protected] => Array
+                (
+                )
+
+            [ID] => 3
+            [NAME] => Тестовая статья 3
+            [PREVIEW] => превью
+            [DETAIL] => детальный
+            [PUBLICATION_DATE] => 2019-11-10 17:17:17
+            [AUTHOR] => 1
+        )
+
+)
+Array
+(
+    [0] => local\db\Story\Row Object
+        (
+            [modelClass:protected] => local\db\Story\Element
+            [autoloadFields:protected] => Array
+                (
+                    [GENRES] => Array
+                        (
+                            [0] => local\db\Genre\Element
+                            [1] => ID_STORIES
+                            [2] => ID_GENRES
+                            [3] => STORIES_GENRES
+                        )
+
+                )
+
+            [autoLoaded:protected] => Array
+                (
+                )
+
+            [ID] => 3
+            [NAME] => Тестовая статья 3
+            [PREVIEW] => превью
+            [DETAIL] => детальный
+            [PUBLICATION_DATE] => 2019-11-10 17:17:17
+            [AUTHOR] => 1
+        )
+
+)
+Array
+(
+    [0] => local\db\Story\Row Object
+        (
+            [modelClass:protected] => local\db\Story\Element
+            [autoloadFields:protected] => Array
+                (
+                    [GENRES] => Array
+                        (
+                            [0] => local\db\Genre\Element
+                            [1] => ID_STORIES
+                            [2] => ID_GENRES
+                            [3] => STORIES_GENRES
+                        )
+
+                )
+
+            [autoLoaded:protected] => Array
+                (
+                )
+
+            [ID] => 3
+            [NAME] => Тестовая статья 3
+            [PREVIEW] => превью
+            [DETAIL] => детальный
+            [PUBLICATION_DATE] => 2019-11-10 17:17:17
+            [AUTHOR] => 1
+        )
+
+)
+Array
+(
+    [0] => local\db\Story\Row Object
+        (
+            [modelClass:protected] => local\db\Story\Element
+            [autoloadFields:protected] => Array
+                (
+                    [GENRES] => Array
+                        (
+                            [0] => local\db\Genre\Element
+                            [1] => ID_STORIES
+                            [2] => ID_GENRES
+                            [3] => STORIES_GENRES
+                        )
+
+                )
+
+            [autoLoaded:protected] => Array
+                (
+                )
+
+            [ID] => 3
+            [NAME] => Тестовая статья 3
+            [PREVIEW] => превью
+            [DETAIL] => детальный
+            [PUBLICATION_DATE] => 2019-11-10 17:17:17
+            [AUTHOR] => 1
+        )
+
+)
+Array
+(
+    [0] => local\db\Story\Row Object
+        (
+            [modelClass:protected] => local\db\Story\Element
+            [autoloadFields:protected] => Array
+                (
+                    [GENRES] => Array
+                        (
+                            [0] => local\db\Genre\Element
+                            [1] => ID_STORIES
+                            [2] => ID_GENRES
+                            [3] => STORIES_GENRES
+                        )
+
+                )
+
+            [autoLoaded:protected] => Array
+                (
+                )
+
+            [ID] => 3
+            [NAME] => Тестовая статья 3
+            [PREVIEW] => превью
+            [DETAIL] => детальный
+            [PUBLICATION_DATE] => 2019-11-10 17:17:17
+            [AUTHOR] => 1
+        )
+
+)
+Array
+(
+    [0] => local\db\Story\Row Object
+        (
+            [modelClass:protected] => local\db\Story\Element
+            [autoloadFields:protected] => Array
+                (
+                    [GENRES] => Array
+                        (
+                            [0] => local\db\Genre\Element
+                            [1] => ID_STORIES
+                            [2] => ID_GENRES
+                            [3] => STORIES_GENRES
+                        )
+
+                )
+
+            [autoLoaded:protected] => Array
+                (
+                )
+
+            [ID] => 2
+            [NAME] => Тестовая статья 2
+            [PREVIEW] => превью
+            [DETAIL] => детальный
+            [PUBLICATION_DATE] => 2019-11-10 17:17:17
+            [AUTHOR] => 1
+        )
+
 )

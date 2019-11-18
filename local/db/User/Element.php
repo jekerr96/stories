@@ -10,6 +10,7 @@ class Element extends ElementBase {
     protected $rowClass = Row::class;
     protected $tableName = "USERS";
     protected $selectFields = ["LOGIN", "AVATAR"];
+    protected $relativeTables = ["FAVORITES" => "ID_USER"];
 
     /**
      * @param $login

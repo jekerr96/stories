@@ -10,7 +10,7 @@ class Helper {
         $renderer->render($partial, $params);
     }
 
-    public static function getUrl($params = []) {
+    public static function getUrl($params = [], $replaceAjax = true) {
         $query = array_merge($_GET, $params);
 
         foreach ($query as $key => $item) {
@@ -23,7 +23,13 @@ class Helper {
             $uriParams = "?" . http_build_query($query);
         }
 
-        return parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH) . $uriParams;
+        $url = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH) . $uriParams;
+
+        if ($replaceAjax) {
+            $url = str_replace("/ajax", "", $url);
+        }
+
+        return $url;
     }
 
     /**
