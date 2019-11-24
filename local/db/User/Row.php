@@ -12,7 +12,14 @@ use local\db\RowBase;
 
 class Row extends RowBase {
     protected $isAuth = false;
-    protected $autoloadFields = ["FAVORITES" => [\local\db\Story\Element::class, "ID_USER", "ID_STORY", "FAVORITES"]];
+    protected $autoloadFields = [
+        "FAVORITES" => [
+            \local\db\Story\Element::class, "ID_USER", "ID_STORY", "FAVORITES"
+        ],
+        "REED_LATER" => [
+            \local\db\Story\Element::class, "ID_USER", "ID_STORY", "REED_LATER"
+        ],
+    ];
 
     public function isAdmin() {
         return $this->ID == 1;

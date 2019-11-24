@@ -1,0 +1,6 @@
+RewriteEngine on
+Options +FollowSymlinks
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteRule ^story/([0-9]+)/$ /stories/?id=$1 [QSA,L]

@@ -147,6 +147,7 @@ class ElementBase {
      */
     public function getList($useInnerJoin = false) {
         $sql  = $this->prepareSql($useInnerJoin);
+        file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/local/log/log.txt", print_r([$sql], true), FILE_APPEND); //todo remove!
         $rows = [];
 
         /** @var \PDOStatement $stmt */
@@ -195,7 +196,13 @@ class ElementBase {
             if (is_array($item)) {
                 $filter .= " AND  $key IN (" . implode(", ", $item) . ")";
             } else {
-                $filter .= " AND $key = $item";
+                if ($key[0] == "!") {
+                    $key = substr($key, 1);
+                    $filter .= " AND $key != $item";
+                } else {
+                    $filter .= " AND $key = $item";
+                }
+
             }
         }
 

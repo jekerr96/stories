@@ -38,7 +38,7 @@ use local\Helper; ?>
                             <? endforeach; ?>
                         </div>
                         <div class="author-stories js-author-stories">
-                            <div class="list-stories js-ajax-container" data-name="page2">
+                            <div class="list-stories js-ajax-container" data-href="/ajax/profile/author-stories/" data-name="page2">
                                 <?
                                 $storyModel    = new StoryElement();
                                 $filter        = [];
@@ -74,8 +74,6 @@ use local\Helper; ?>
                         if (!empty($curUser)) {
                             $curUser = $curUser[0];
                         }
-                        
-                        file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/local/log/log.txt", print_r($curUser->FAVORITES, true), FILE_APPEND); //todo remove!
 
                         foreach ($curUser->FAVORITES as $story): ?>
                             <? Helper::render("/partials/story-item.php", [
@@ -89,9 +87,13 @@ use local\Helper; ?>
                     <div class="list-stories js-ajax-container" data-name="page4">
                         <?
                         $storyModel = new StoryElement();
-                        $stories    = $storyModel->page(2, Helper::getCurPage("page4"), "page4")->getList();
+                        $curUser = $model->filter(["ID" => $USER->ID])->getList();
 
-                        foreach ($stories as $story): ?>
+                        if (!empty($curUser)) {
+                            $curUser = $curUser[0];
+                        }
+
+                        foreach ($curUser->REED_LATER as $story): ?>
                             <? Helper::render("/partials/story-item.php", [
                                 "item" => $story,
                             ]); ?>
@@ -100,10 +102,10 @@ use local\Helper; ?>
                     </div>
                 </div>
                 <div class="js-tabs__content">
-                    <div class="list-stories js-ajax-container" data-name="page5">
+                    <div class="list-stories js-ajax-container" data-name="page5" data-href="/ajax/profile/works/">
                         <?
                         $storyModel = new StoryElement();
-                        $stories    = $storyModel->page(2, Helper::getCurPage("page5"), "page5")->getList();
+                        $stories    = $storyModel->filter(["AUTHOR" => $USER->ID])->page(2, Helper::getCurPage("page5"), "page5")->getList();
 
                         foreach ($stories as $story): ?>
                             <? Helper::render("/partials/story-item.php", [
@@ -114,10 +116,10 @@ use local\Helper; ?>
                     </div>
                 </div>
                 <div class="js-tabs__content">
-                    <div class="list-stories js-ajax-container" data-name="page6">
+                    <div class="list-stories js-ajax-container" data-href="/ajax/profile/draft/" data-name="page6">
                         <?
                         $storyModel = new StoryElement();
-                        $stories    = $storyModel->page(2, Helper::getCurPage("page6"), "page6")->getList();
+                        $stories    = $storyModel->filter(["AUTHOR" => $USER->ID, "STATUS" => $storyModel::DRAFT])->page(2, Helper::getCurPage("page6"), "page6")->getList();
 
                         foreach ($stories as $story): ?>
                             <? Helper::render("/partials/story-item.php", [

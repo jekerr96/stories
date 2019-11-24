@@ -9,8 +9,13 @@ use local\Helper;
 class Element extends ElementBase {
     protected $rowClass = Row::class;
     protected $tableName = "STORIES";
-    protected $selectFields = ["NAME", "PREVIEW", "DETAIL", "PUBLICATION_DATE", "AUTHOR"];
+    protected $selectFields = ["NAME", "PREVIEW", "DETAIL", "PUBLICATION_DATE"];
     protected $relativeTables = ["STORIES_GENRES" => "ID_STORIES"];
+    protected $filter = [];
+
+    const READY = 1;
+    const MODERATE = 2;
+    const DRAFT = 0;
 
     public function getStoriesWithFilter() {
         $arrInclude = [];

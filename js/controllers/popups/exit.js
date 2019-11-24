@@ -8,7 +8,7 @@ const PopupExit = PopupBase.extend(
     },
     {
         init() {
-            this._super(); 
+            this._super();
         },
 
         ".js-exit click"() {

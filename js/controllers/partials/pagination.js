@@ -21,23 +21,29 @@ const Pagination = Control.extend(
                 name = "page";
             }
 
+            if (el.dataset.page) {
+                this.pushUrl.add({key: name, value: el.dataset.page});
+            } else {
+                this.pushUrl.remove(name);
+            }
+
+            let url;
+
+            if ($container.data("href")) {
+                url = $container.data("href") + location.search;
+            } else {
+                url = "/ajax" + el.getAttribute("href");
+            }
+
             ev.preventDefault();
 
             $.ajax({
-                url: "/ajax" + el.getAttribute("href"),
+                url: url,
                 method: "POST",
                 data: {name: name},
                 success: (data) => {
                     $container.html(data);
-
-                    $("html, body").animate({scrollTop: $container.offset().top})
-
-                    if (el.dataset.page) {
-                        this.pushUrl.add({key: name, value: el.dataset.page});
-                    } else {
-                        this.pushUrl.remove(name);
-                    }
-
+                    $("html, body").animate({scrollTop: $container.offset().top});
                 }
             });
         }

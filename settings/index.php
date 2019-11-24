@@ -1,5 +1,6 @@
 <? $pageType = "settings" ?>
 <? include $_SERVER['DOCUMENT_ROOT'] . "/template/header.php" ?>
+<? global $USER ?>
 
 <div class="container">
     <div class="settings-wrapper">
@@ -7,12 +8,12 @@
             <form action="javascript:void(0)" class="base-form" data-form-type="settings">
                 <div class="profile-container">
                     <div class="name-wrapper">
-                        <div class="name">#NICKNAME#</div>
+                        <div class="name"><?= $USER->LOGIN ?></div>
                     </div>
                     <div class="avatar-wrapper">
                         <div class="image-wrapper">
                             <img class="avatar js-avatar-image"
-                                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxXBKDAHjWPEv-GURolfl5Lx_uQuj2DR6Zd8lJnrEtKbxJr3o4KA&s"
+                                 src="<?= $USER->AVATAR ?>"
                                  alt="">
                         </div>
                         <button class="change-avatar js-change-avatar">Сменить аватарку</button>

@@ -1,12 +1,19 @@
-<? $pageType = "story" ?>
-<? include $_SERVER['DOCUMENT_ROOT'] . "/template/header.php" ?>
+<?
+use local\db\Story\Element;
+$pageType = "story";
+include $_SERVER['DOCUMENT_ROOT'] . "/template/header.php";
+
+$model = new Element();
+$curStory = $model->filter(["ID" => (int)$_GET["id"]])->getList()[0];
+
+?>
     <div class="container">
         <div class="story-container">
             <div class="story-header-container">
                 <div class="author-container">
                     <div class="author-avatar"
-                         style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxXBKDAHjWPEv-GURolfl5Lx_uQuj2DR6Zd8lJnrEtKbxJr3o4KA&s')"></div>
-                    <div class="author-name">#NICKNAME#</div>
+                         style="background-image: url('<?= $curStory->AUTHOR->AVATAR ?>')"></div>
+                    <div class="author-name"><?= $curStory->AUTHOR->AVATAR ?></div>
                 </div>
                 <div class="header-info">
                     <div class="author-container mobile">
