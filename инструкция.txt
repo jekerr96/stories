@@ -1,0 +1,22 @@
+#миграции
+php artisan migrate - установка миграций
+php artisan make:migration <name> --create=<table name> - создание миграции
+php artisan migrate:refresh - откат всех миграций и установка всех миграций
+
+#модели
+App\Example::all() - все записи
+php artisan make:model Example -mc  - создание модели с миграцией и контроллером
+
+#БД
+
+DB::table("<table name>")->get() - все записи
+DB::table("<table name>")->find($id) - фильтр (видимо только по id)
+
+#роуты
+Route::get("/example/{id}", function ($id) {} - по get
+
+#вью
+view("example.index") - соответствует /views/example/index.blade.php
+
+#контроллеры
+php artisan make:controller <name>
