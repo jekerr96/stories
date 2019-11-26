@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Auth;
                     <? else: ?>
                     <div class="header-profile">
                         <div class="avatar"
-                             style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxXBKDAHjWPEv-GURolfl5Lx_uQuj2DR6Zd8lJnrEtKbxJr3o4KA&s')"></div>
+                             style="background-image: url('<?= asset("storage/" . Auth::user()->avatar) ?>')"></div>
                         <div class="profile-name"><?= Auth::user()->name ?></div>
                         <div class="header-profile-action-icon"></div>
                         <div class="header-profile-actions js-header-actions">

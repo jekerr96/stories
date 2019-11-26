@@ -9,6 +9,7 @@ const BasePage = Control.extend({
     defaults: {}
 }, {
     init() {
+        this.$element = $(this.element);
         window.csrf = document.head.querySelector("[name='csrf-token']").content;
         $.ajaxSetup({
             headers: {

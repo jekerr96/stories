@@ -2,6 +2,7 @@ import {BasePage} from "./base";
 import "select2";
 import Quill from "quill";
 import autosize from "autosize";
+import {initForm} from "../forms/helper/loader";
 
 const WritePage = BasePage.extend({
         defaults: {}
@@ -37,6 +38,7 @@ const WritePage = BasePage.extend({
 
             this.initSelect();
             autosize(document.querySelectorAll('textarea'));
+            initForm(this.$element);
         },
 
         initSelect() {

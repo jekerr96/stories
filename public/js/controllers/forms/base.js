@@ -30,6 +30,7 @@ const BaseForm  = Control.extend(
 
             autosize(document.querySelectorAll('textarea'));
             this.validate();
+            this.checkFilled();
         },
 
         "input, textarea input"(el) {
@@ -100,6 +101,12 @@ const BaseForm  = Control.extend(
             if (data.fields) {
                 this.validator.showErrors(data.fields);
             }
+        },
+
+        checkFilled() {
+            this.element.querySelectorAll("input, textarea").forEach((el) => {
+                el.classList.toggle("filled", !!el.value);
+            });
         }
     },
 );

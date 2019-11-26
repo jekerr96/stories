@@ -1,3 +1,6 @@
+<?php
+use Illuminate\Support\Facades\Auth;
+?>
 <div class="story-item">
     <a href="javascript:void(0)"
        class="story-name underline"><?= $item->name ?></a><span
@@ -10,11 +13,11 @@
     </div>
     <div class="bottom-tools">
         <div class="buttons">
-            <? if ($item->ID == 2): ?>
-            <div class="edit js-tippy" data-tippy-content="Редактировать"></div>
+            <? if (Auth::check() && $item->id == Auth::user()->id): ?>
+                <div class="edit js-tippy" data-tippy-content="Редактировать"></div>
             <? else: ?>
-            <div class="bookmark js-tippy" data-tippy-content="Добавить в закладки"></div>
-            <div class="read-late js-tippy" data-tippy-content="Прочитать позже"></div>
+                <div class="bookmark js-tippy" data-tippy-content="Добавить в закладки"></div>
+                <div class="read-late js-tippy" data-tippy-content="Прочитать позже"></div>
             <? endif; ?>
         </div>
         <div class="date"><?= date("d.m.Y") ?></div>

@@ -11,10 +11,14 @@
 |
 */
 
+use App\Genre;
+use App\Story;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 Route::get('/', "StoryController@index");
 
@@ -41,7 +45,7 @@ Route::post("/popups/auth/proccess", function(Request $request) {
            "auth" => true,
         ]);
     } else {
-        return response()->json(["name" => $login, "password" => $pass]);
+        return response()->json(["errors" => "Неверный логин или пароль"]);
     }
 });
 
@@ -98,4 +102,95 @@ Route::post("/popups/exit/proccess", function() {
    Auth::logout();
 
    return response()->json(["success" => true]);
+});
+
+Route::get("profile/{user?}", function(Request $request, $user = null) {
+    if (is_null($user)) {
+        $user = Auth::user();
+    } else {
+        $user = User::query()->where("id", $user)->first();
+    }
+
+    if (!$user) {
+        abort(404);
+    }
+
+    $favorite = $request->get("favorite");
+
+    return view("profile.index", ["pageType" => "profile", "user" => $user, "favorite" => $favorite]);
+});
+
+Route::get("/settings", function() {
+    if (!Auth::check()) {
+        return redirect("");
+    }
+
+    return view("settings.index", ["pageType" => "settings"]);
+});
+
+Route::post("/settings/apply", function(Request $request) {
+    $avatar = $request->file("avatar");
+    $email = $request->post("email");
+    $curPass = $request->post("curPass");
+    $newPass = $request->post("newPass");
+    $repeatPass = $request->post("repeatPass");
+    $allowAuthors = $request->post("authors");
+    $allowBookmarks = $request->post("bookmarks");
+    $allowLater = $request->post("see-later");
+    $result = [];
+
+    if ($avatar) {
+        if (explode("/", $avatar->getClientMimeType())[0] == "image") {
+            if (Auth::user()->avatar != "avatars/no-avatar.png") {
+                File::delete("storage/" . Auth::user()->avatar);
+            }
+
+            Auth::user()->avatar = $avatar->store("avatars");
+        } else {
+            $result["errors"] = "Ошибка загрузки аватара";
+        }
+    }
+
+    if ($email) {
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $result["fields"]["email"] = "Некорректный email";
+        } else {
+            Auth::user()->email = $email;
+        }
+    }
+
+    if ($newPass) {
+        if (Hash::check($curPass, Auth::user()->password)) {
+            if ($newPass == $repeatPass) {
+                Auth::user()->password = Hash::make($newPass);
+            } else {
+                $result["fields"]["newPass"] = "Пароли не совпадают";
+                $result["fields"]["repeatPass"] = "Пароли не совпадают";
+            }
+        } else {
+            $result["fields"]["curPass"] = "Неверный пароль";
+        }
+    }
+
+    Auth::user()->allow_favorites = !!$allowAuthors;
+    Auth::user()->allow_bookmarks = !!$allowBookmarks;
+    Auth::user()->allow_later = !!$allowLater;
+
+    if (empty($result)) {
+        $result["success"] = true;
+    }
+
+    Auth::user()->save();
+    return response()->json($result);
+});
+
+Route::get("/write/{id?}", function($id = null) {
+    $story = false;
+    $genres = Genre::query()->get();
+
+    if ($id) {
+        $story = Story::query()->where("id", $id)->first();
+    }
+
+    return view("write.index", ["pageType" => "write", "story" => $story, "genres" => $genres]);
 });
