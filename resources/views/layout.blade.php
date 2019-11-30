@@ -3,10 +3,12 @@ use Illuminate\Support\Facades\Auth;
 ?>
 <html class="white" lang="ru">
 <head>
-    <link rel="stylesheet" href="/css/style.css?<?= filemtime($_SERVER["DOCUMENT_ROOT"] . "/css/style.css") ?>">
+    <link rel="stylesheet" href="/css/style.css?<?= filemtime($_SERVER["DOCUMENT_ROOT"] . "/public/css/style.css") ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title><?= isset($title) ? $title . " — Pornotale" : "Порно истории — Pornotale" ?></title>
+    <meta name="keywords" content="порно, истории, рассказы, 18+, истории 18+, рассказы 18+">
+    <meta name="description" content='Pornotale — место, где вы можете почитать порно истории и "расслабиться"'>
 </head>
 <body class="<?= $pageType ?>-page">
 <main>
@@ -16,6 +18,7 @@ use Illuminate\Support\Facades\Auth;
                 <div class="logo-container">
                     <a href="/">
                         <img src="/images/logo.png" alt="pornotale">
+                        <h1 hidden>Pornotale</h1>
                     </a>
 
                 </div>
@@ -69,7 +72,7 @@ if ($pageType) {
     $jsFileList[] = $pageType . ".bundle";
 }
 foreach ($jsFileList as $jsFilename):
-$jsFilePath = "/js/bundle/$jsFilename.js";
+$jsFilePath = "/public/js/bundle/$jsFilename.js";
 if (!file_exists($_SERVER["DOCUMENT_ROOT"] . $jsFilePath)) continue;
 ?><script src="<?= $jsFilePath . '?' . filemtime($_SERVER["DOCUMENT_ROOT"] . $jsFilePath)?>"></script><?
 endforeach;

@@ -1,4 +1,4 @@
-#миграции
+зрз#миграции
 php artisan migrate - установка миграций
 php artisan make:migration <name> --create=<table name> - создание миграции
 php artisan migrate:refresh - откат всех миграций и установка всех миграций

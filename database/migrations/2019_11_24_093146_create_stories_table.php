@@ -18,11 +18,11 @@ class CreateStoriesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->text("preview");
-            $table->text("detail");
+            $table->longText("detail");
 //            $table->bigInteger("user_id")->unsigned();
 //            $table->foreign("user_id")->references("id")->on("users");
 //            $table->integer("status");
-//            $table->timestamp("public_date")->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp("public_date")->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
         });
     }

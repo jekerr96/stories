@@ -41,6 +41,11 @@
                     </div>
                     <div class="text-container js-text-container">
                         <?= $story->detail ?>
+                        <p>
+                            <span class="btn-wrapper link">
+                                <a target="_blank" class="btn" href="<?= $story->url ?>"><span>Первоисточник</span></a>
+                            </span>
+                        </p>
                     </div>
                 </div>
             </div>

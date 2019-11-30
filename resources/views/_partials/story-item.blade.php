@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Auth;
     <a href="<?= $item->getSrc() ?>"
        class="story-name underline"><?= $item->name ?></a>
 {{--    <span class="rating">5</span>--}}
-    <div class="story-preview"><?= $item->preview ?></div>
+    <div class="story-preview"><?= strip_tags(mb_substr($item->detail, 0, 300) . "...") ?></div>
     <div class="list-genres">
         <? foreach ($item->genres as $genre): ?>
         <a href="<?= $genre->getSrc() ?>"><?= $genre->name ?></a>
@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Auth;
             <? endif; ?>
         </div>
   */ ?>
-        <div class="date"><?= date("d.m.Y") ?></div>
+        <div class="date"><?= date("d.m.Y", strtotime($item->public_date)) ?></div>
     </div>
     <div class="btn-wrapper">
         <a href="<?= $item->getSrc() ?>" class="detail-link"><span>Читать полную историю</span></a>
