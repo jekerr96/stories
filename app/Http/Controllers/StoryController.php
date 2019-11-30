@@ -21,7 +21,7 @@ class StoryController extends Controller
             $exclude = explode(",", $request->get("exclude"));
         }
 
-        $query = Story::query()->orderBy("id", "desc");
+        $query = Story::query()->orderBy("public_date", "desc")->orderBy("name", "desc");
 
         if ($include) {
             $query->whereIn("id", function($query) use ($include) {
@@ -51,7 +51,7 @@ class StoryController extends Controller
             ]);
         }
 
-        $genres = Genre::query()->get();
+        $genres = Genre::query()->orderBy("name")->get();
         return view('index.index', [
             "pageType" => "main",
             "items" => $items,

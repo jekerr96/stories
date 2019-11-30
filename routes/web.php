@@ -25,6 +25,8 @@ Route::post('/', "StoryController@index");
 
 Route::get("/stories/{id}", "StoryController@detail");
 
+Route::get("/parse/{id}/{page?}", "ParseController@parse");
+
 Route::get('/popups/auth', function(Request $request) {
     return view("popups.auth");
 });
