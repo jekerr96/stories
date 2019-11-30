@@ -21,7 +21,7 @@ class StoryController extends Controller
             $exclude = explode(",", $request->get("exclude"));
         }
 
-        $query = Story::query();
+        $query = Story::query()->orderBy("id", "desc");
 
         if ($include) {
             $query->whereIn("id", function($query) use ($include) {
