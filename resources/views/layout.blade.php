@@ -9,6 +9,20 @@ use Illuminate\Support\Facades\Auth;
     <title><?= isset($title) ? $title . " — Pornotale" : "Порно истории — Pornotale" ?></title>
     <meta name="keywords" content="порно, истории, рассказы, 18+, истории 18+, рассказы 18+">
     <meta name="description" content='Pornotale — место, где вы можете почитать порно истории и "расслабиться"'>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(56467234, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true
+        });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/56467234" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
 </head>
 <body class="<?= $pageType ?>-page">
 <main>
