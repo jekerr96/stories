@@ -7,6 +7,7 @@
     form {
         position: relative;
         max-width: 100%;
+        margin: 0 0 0 30px;
 
         input {
             width: 350px;
@@ -33,6 +34,8 @@
 
     @media @media-sm {
         form {
+            margin-top: 30px;
+            margin-left: 0;
             width: 100%;
 
             input {
@@ -48,9 +51,11 @@
     justify-content: space-between;
     padding: 20px 0;
 
-    @media @media-xs {
+    @media @media-sm {
         flex-direction: column;
+    }
 
+    @media @media-xs {
         .header-actions {
             margin-top: 20px;
         }

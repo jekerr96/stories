@@ -54,7 +54,8 @@ const BaseForm  = Control.extend(
                     $(element).closest("label").find(".js-error").remove();
 
                 }.bind(this),
-                submitHandler: function () {
+                submitHandler: function (el, ev) {
+                    ev.originalEvent.preventDefault();
                     if (this.$element.valid()) {
                         this.submitForm();
                     } else {
@@ -84,9 +85,13 @@ const BaseForm  = Control.extend(
                 processData: false,
                 contentType: false,
                 dataType: this.options.type,
-                data: new FormData(this.element),
+                data: this.getFormData(),
                 success: this.onAjaxSuccess.bind(this)
             });
+        },
+
+        getFormData() {
+            return new FormData(this.element);
         },
 
         onAjaxSuccess(data) {

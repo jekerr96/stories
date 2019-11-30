@@ -2,9 +2,9 @@
 use Illuminate\Support\Facades\Auth;
 ?>
 <div class="story-item">
-    <a href="javascript:void(0)"
-       class="story-name underline"><?= $item->name ?></a><span
-        class="rating">5</span>
+    <a href="<?= $item->getSrc() ?>"
+       class="story-name underline"><?= $item->name ?></a>
+{{--    <span class="rating">5</span>--}}
     <div class="story-preview"><?= $item->preview ?></div>
     <div class="list-genres">
         <? foreach ($item->genres as $genre): ?>
@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
         <? endforeach; ?>
     </div>
     <div class="bottom-tools">
+        <? /*
         <div class="buttons">
             <? if (Auth::check() && $item->id == Auth::user()->id): ?>
                 <div class="edit js-tippy" data-tippy-content="Редактировать"></div>
@@ -20,6 +21,7 @@ use Illuminate\Support\Facades\Auth;
                 <div class="read-late js-tippy" data-tippy-content="Прочитать позже"></div>
             <? endif; ?>
         </div>
+  */ ?>
         <div class="date"><?= date("d.m.Y") ?></div>
     </div>
     <div class="btn-wrapper">

@@ -18,11 +18,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 
 Route::get('/', "StoryController@index");
 
 Route::post('/', "StoryController@index");
+
+Route::get("/stories/{id}", "StoryController@detail");
 
 Route::get('/popups/auth', function(Request $request) {
     return view("popups.auth");
@@ -193,4 +194,30 @@ Route::get("/write/{id?}", function($id = null) {
     }
 
     return view("write.index", ["pageType" => "write", "story" => $story, "genres" => $genres]);
+});
+
+Route::post("write/save/{id?}", function(Request $request, $id = null) {
+     $name = $request->post("name");
+     $preview = $request->post("preview");
+     $genre = $request->post("genre");
+     $text = $request->post("text");
+
+     if ($id) {
+         $story = Story::query()->where("id", $id)->first();
+         if ($story->author_id != Auth::user()->id) {
+             return response()->json(["errors" => "Неверный id"]);
+         }
+     } else {
+         $story = new Story();
+     }
+
+     $story->name = $name;
+     $story->preview = $preview;
+     $story->detail = $text;
+     $story->author = Auth::user()->id;
+     $story->public_date = time();
+     $story->save();
+
+
+     return response()->json(["success" => true]);
 });

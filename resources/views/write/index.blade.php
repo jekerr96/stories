@@ -2,7 +2,7 @@
 @section("content")
     <div class="container">
         <div class="write-container">
-            <form action="write/save" class="base-form" data-form-type="write">
+            <form action="/write/save" method="post" class="base-form" data-form-type="write">
                 <label>
                     <input type="text" name="name" autocomplete="off" value="<?= $story ? $story->name : "" ?>">
                     <span>Название истории</span>
@@ -12,7 +12,7 @@
                     <span>Описание</span>
                 </label>
                 <label>
-                    <select name="genre" multiple class="js-select">
+                    <select name="genre[]" multiple class="js-select">
                         <?
                         $sortGenres = [];
                         if ($story) {

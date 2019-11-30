@@ -19,6 +19,7 @@ const MainPage = BasePage.extend({
 
             let include = this.pushUrl.get("include");
             let exclude = this.pushUrl.get("exclude");
+            let search = this.pushUrl.get("q");
 
             this.pushUrl.removeAll();
 
@@ -56,6 +57,10 @@ const MainPage = BasePage.extend({
                 this.pushUrl.add({key: "include", value: include});
             }
 
+            if (search) {
+                this.pushUrl.add({key: "q", value: search});
+            }
+
             this.getStories();
         },
 
@@ -65,6 +70,7 @@ const MainPage = BasePage.extend({
 
             let exclude = this.pushUrl.get("exclude");
             let include = this.pushUrl.get("include");
+            let search = this.pushUrl.get("q");
 
             this.pushUrl.removeAll();
 
@@ -99,6 +105,33 @@ const MainPage = BasePage.extend({
             }
 
             if (exclude.length) {
+                this.pushUrl.add({key: "exclude", value: exclude});
+            }
+
+            if (search) {
+                this.pushUrl.add({key: "q", value: search});
+            }
+
+            this.getStories();
+        },
+
+        ".js-search-form submit"(el, ev) {
+            ev.preventDefault();
+            let exclude = this.pushUrl.get("exclude");
+            let include = this.pushUrl.get("include");
+            let search = el.querySelector("input").value;
+            console.log(search);
+            this.pushUrl.removeAll();
+
+            if (search) {
+                this.pushUrl.add({key: "q", value: search});
+            }
+
+            if (include) {
+                this.pushUrl.add({key: "include", value: include});
+            }
+
+            if (exclude) {
                 this.pushUrl.add({key: "exclude", value: exclude});
             }
 

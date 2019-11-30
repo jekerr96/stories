@@ -4,7 +4,7 @@
         <div class="content-wrapper">
             <div class="genres">
                 <div class="genres-title js-genres-toggle-btn"><span>Поиск по жанрам</span></div>
-                <div class="genres-wrapper js-toggle-genres" style="display: none;">
+                <div class="genres-wrapper js-toggle-genres" style="<?= isset($_GET["include"]) || isset($_GET["exclude"]) ? "" : "display: none;" ?>">
                     <? foreach ($genres as $genre): ?>
                     <a href="javascript:void(0)" class="js-genre">
                         <span class="genre-name"><?= $genre->name ?></span>
@@ -22,7 +22,7 @@
                 <? foreach ($items as $item): ?>
                     @include("_partials.story-item")
                 <? endforeach; ?>
-                    {{ $items->links() }}
+                    {{ $items->appends(request()->input())->links() }}
             </div>
         </div>
 

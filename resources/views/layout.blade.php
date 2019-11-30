@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
     <link rel="stylesheet" href="/css/style.css?<?= filemtime($_SERVER["DOCUMENT_ROOT"] . "/css/style.css") ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Title</title>
+    <title><?= isset($title) ? $title . " — Pornotale" : "Порно истории — Pornotale" ?></title>
 </head>
 <body class="<?= $pageType ?>-page">
 <main>
@@ -14,8 +14,19 @@ use Illuminate\Support\Facades\Auth;
         <div class="container">
             <div class="header-wrapper">
                 <div class="logo-container">
-                    #ЛОГОТИП#
+                    <a href="/">
+                        <img src="/images/logo.png" alt="pornotale">
+                    </a>
+
                 </div>
+                <div class="search-wrapper">
+                    <form action="/" class="js-search-form">
+                        <label>
+                            <input type="text" name="q" autocomplete="off" placeholder="Найти самую интересную историю" value="<?= isset($_GET["q"]) ? $_GET["q"] : ""  ?>">
+                        </label>
+                    </form>
+                </div>
+                <? /*
                 <div class="header-actions<?= true ? " auth js-header-profile" : "" ?>"><? // auth ?>
                     <? if (!Auth::check()): ?>
                     <a href="javascript:void(0)" data-href="/popups/auth/" class="js-fancy">Войти</a>
@@ -39,24 +50,19 @@ use Illuminate\Support\Facades\Auth;
                     </div>
                     <? endif; ?>
                 </div>
+ */ ?>
             </div>
         </div>
     </header>
     <div class="container">
-        <div class="search-wrapper">
-            <form action="/">
-                <label>
-                    <input type="text" name="q" autocomplete="off" placeholder="Найти самую интересную историю">
-                </label>
-            </form>
-        </div>
+
     </div>
 
     @yield("content")
 
 </main>
 <div class="to-top js-to-top hidden"></div>
-@include("_partials.sticky-message")
+{{--@include("_partials.sticky-message")--}}
 <?
 $jsFileList = ['commons.chunk'];
 if ($pageType) {

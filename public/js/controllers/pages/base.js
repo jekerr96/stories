@@ -18,7 +18,7 @@ const BasePage = Control.extend({
         });
 
         this.stickyMessage = this.element.querySelector(".js-sticky-message");
-        this.showStickyMessage();
+
         if (device.isTouch()) document.documentElement.classList.add("is-touch");
         this.scrollTop = this.element.querySelector(".js-to-top");
         this.checkScroll();
