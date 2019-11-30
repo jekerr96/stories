@@ -70,7 +70,7 @@ if ($pageType) {
 }
 foreach ($jsFileList as $jsFilename):
 $jsFilePath = "/js/bundle/$jsFilename.js";
-if (!file_exists($_SERVER["DOCUMENT_ROOT"] . $jsFilePath)) continue;
+if (!file_exists($_SERVER["DOCUMENT_ROOT"] . "/public" . $jsFilePath)) continue;
 ?><script src="<?= $jsFilePath . '?' . filemtime($_SERVER["DOCUMENT_ROOT"] . "/public" . $jsFilePath)?>"></script><?
 endforeach;
 ?>
