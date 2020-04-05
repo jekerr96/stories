@@ -5,7 +5,7 @@
   "main": "gulpfile.js",
   "dependencies": {
     "@fancyapps/fancybox": "^3.5.7",
-    "acorn": "^6.2.1",
+    "acorn": "^6.4.1",
     "autosize": "^4.0.2",
     "can-construct": "^3.3.1",
     "can-construct-super": "^3.1.3",
